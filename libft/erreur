@@ -1,0 +1,16 @@
+ft_strnstr
+ft_atoi
+strrchr
+strncmp
+strdel
+strclr
+striteri
+striter
+strmap
+strmapi
+strnequ
+strsub
+strjoin
+strsplit
+itoa
+strtrim
