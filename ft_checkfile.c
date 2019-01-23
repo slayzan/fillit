@@ -6,57 +6,45 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:49:36 by humarque          #+#    #+#             */
-/*   Updated: 2019/01/21 21:44:49 by humarque         ###   ########.fr       */
+/*   Updated: 2019/01/23 17:01:22 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
 
-int	ft_checkline(char *str)
-{
-	int res;
+
+t_node	*ft_stock(const int fd)
+{	
+	char *line;
+	t_node *lst;
 	int i;
+	int j;
+	int k;
 
-	while (str[i])
+	i = 0;
+	j = 0;
+	k = 0;
+	while (get_next_line(fd, &line))
 	{
-		if (i > 5)
-			return (-1);
-		if(str[i] != '.' || str[i] != '#')
-			return (-1);
-		i++;
+		while(line[i] == '.' || line[i] == '#')
+		{
+			lst->tab[j][k] = line[i];
+			k++;
+			i++;
+		}
+		i = 0;
+
 	}
-	return (1);
 }
 
-
-int		ft_checkfile(t_struct *lst)
+int main(int argc, char **argv)
 {
-	int ret;
-	int result;
-	char buf[5];
+	char *line;
+	int fd;
 
-	while (ret = read(lst->fd,buf, 6))
+	if(!(fd = open(argv[1], O_RDONLY)))
 	{
-		buf[ret] = '\0';
-		lst->str = ft_strjoin(lst->str, (char const *)buf;
+		close(fd);
+		exit(EXIT_FAILURE);
 	}
-	result = ft_checkline(lst->str);
-	
-}
-
-int ft_findline(t_struct *lst)
-{
-	int res;
-	int ret;
-	char buf[1];
-	
-	res = 0;
-
-	while(ret = read(lst->fd, buf, 1))
-	{
-		buf[ret] = '\0';
-		lst->str = ft_strjoin(lst->str, (char const *)buf);
-		if(!(ft_strchr(buf, '\n')))
-			break;
-	}
-	
+	ft_stock(fd); 
 }
