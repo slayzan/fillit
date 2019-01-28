@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:49:36 by humarque          #+#    #+#             */
-/*   Updated: 2019/01/28 13:10:58 by humarque         ###   ########.fr       */
+/*   Updated: 2019/01/28 15:01:39 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
@@ -42,20 +42,19 @@ static int		ft_checkline(char *line)
 	return (1);
 }
 
-t_node *ft_count(char *line, int count)
+t_node	*ft_read(int fd)
 {
-	static t_node *lst;
-	int res; 
-	if(count < 105)
-		printf("trop de tetraminos");
-	else
-	{	
-		if(!(ft_checkline(line)))
-			printf("erreur");
+	int ret;
+	t_node	*lst;
+	static char temp[BUFF_SIZE + 1];
 
-	}	
+	temp = ft_strnew(BUFF_SIZE + 1);
+	while ((ret = read(fd, temp, BUFF_SIZE) == 21))
+	{
+		hfhfksdlhfkldshlfjklas
+	}
+
 }
-
 int main(int argc, char **argv)
 {
 	int count;
@@ -68,9 +67,5 @@ int main(int argc, char **argv)
 		close(fd);
 		exit(EXIT_FAILURE);
 	}
-	while (get_next_line(fd, &line) == 1)
-	{
-		count++;
-		ft_stock(line, count);
-	}
+	ft_read(fd);
 }
