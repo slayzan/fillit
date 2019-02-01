@@ -6,57 +6,41 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:49:36 by humarque          #+#    #+#             */
-/*   Updated: 2019/01/28 15:01:39 by humarque         ###   ########.fr       */
+/*   Updated: 2019/02/01 17:51:08 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
 
-static t_node *ft_puttotab(char *line, t_node lst)
-{
-	int i;
-	static int j;
-	static int k;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	while (line[i])
-		lst->tab[j][k++] = line[i++];
-	j++;
-	return (lst);
-}
-
-static int		ft_checkline(char *line)
+static int		ft_checkline(char *line,int count)
 {
 	int i;
 
 	i = 0;
+	if(count > 130)
+		return (0);
 	while (line[i])
 	{
-		if(line[i] != '.' || line[i] != '#')
+		if(line[i] != '.' && line[i] != '#')
 			return (0);
-		if(i > 4)
+		if(i > 3)
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-t_node	*ft_read(int fd)
+t_verif	*ft_checknewline(char *line, t_verif lst)
 {
-	int ret;
-	t_node	*lst;
-	static char temp[BUFF_SIZE + 1];
-
-	temp = ft_strnew(BUFF_SIZE + 1);
-	while ((ret = read(fd, temp, BUFF_SIZE) == 21))
+	if(line[0] == '\0')
 	{
-		hfhfksdlhfkldshlfjklas
+		
 	}
 
 }
+
 int main(int argc, char **argv)
 {
+	t_verif *liste;
 	int count;
 	char *line;
 	int fd;
@@ -67,5 +51,15 @@ int main(int argc, char **argv)
 		close(fd);
 		exit(EXIT_FAILURE);
 	}
-	ft_read(fd);
+	while (get_next_line(fd, &line) == 1)
+	{
+		count++;
+		if (!(ft_checkline(line, count)))
+			printf("0");
+		if (!(ft_checknewline(line, liste)))
+			printf("0");
+	
+
+	}
+	printf("1");
 }
