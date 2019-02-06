@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:57:23 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/01 17:38:21 by humarque         ###   ########.fr       */
+/*   Updated: 2019/02/06 12:15:00 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct	s_verif
 
 typedef struct		s_node
 {
-	int nunber;
+	int number;
 	char *str;
 	struct	s_node *next;
 	struct	s_node *previous;
