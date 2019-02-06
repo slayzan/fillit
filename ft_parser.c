@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:49:36 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/06 14:27:37 by humarque         ###   ########.fr       */
+/*   Updated: 2019/02/06 14:37:26 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
@@ -57,7 +57,6 @@ int main(int argc, char **argv)
 	while (get_next_line(fd, &line) == 1)
 	{
 		count++;
-		printf("%d\n", count);
 		if (!(ft_checkline(line, count)))
 			printf("0");
 		if ((new = ft_checknewline(line, new, count)) == 2)
