@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:49:36 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/06 14:37:26 by humarque         ###   ########.fr       */
+/*   Updated: 2019/02/06 15:04:35 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
@@ -40,15 +40,32 @@ int		ft_checknewline(char *line, int new, int count)
 	return (new);
 }
 
+int	ft_counthastag(char *line, int hash)
+{
+	int i;
+
+	i = 0;
+	if (line[0] == '\0')
+		hash = 0;
+	while (line[i])
+	{
+		if (line[i] == '#')
+		   hash++;
+		i++;
+	}
+	return (hash);
+}
 int main(int argc, char **argv)
 {
 	int new;
+	int hash;
 	int count;
 	char *line;
 	int fd;
 
 	count = 0;
 	new = 0;
+	hash = 0;
 	if(!(fd = open(argv[1], O_RDONLY)))
 	{
 		close(fd);
@@ -61,6 +78,8 @@ int main(int argc, char **argv)
 			printf("0");
 		if ((new = ft_checknewline(line, new, count)) == 2)
 			printf(" new line = 0");
+		if(((hash = ft_counthastag(line, hash)) > 4))
+			printf("erreur hash");
 	}
 	printf("1");
 }
