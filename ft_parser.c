@@ -75,7 +75,6 @@ int main(int argc, char **argv)
 	int tetra;
 	char *line;
 	int fd;
-	int nb_tet;
 
 	tetra = 0;
 	count = 0;
