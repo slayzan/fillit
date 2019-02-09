@@ -58,6 +58,15 @@ int	ft_counthastag(char *line, int hash)
 	}
 	return (hash);
 }
+
+int	ft_numb_line(char *line, int count)
+{
+	if ((line[0] == '\0' && (count % 5 != 0))
+		|| ((count % 5 == 0) && line[0] != '\0'))
+			return (0);
+	return (1);
+}
+
 int main(int argc, char **argv)
 {
 	int new;
@@ -66,6 +75,7 @@ int main(int argc, char **argv)
 	int tetra;
 	char *line;
 	int fd;
+	int nb_tet;
 
 	tetra = 0;
 	count = 0;
@@ -80,13 +90,21 @@ int main(int argc, char **argv)
 	while (get_next_line(fd, &line) == 1)
 	{
 		count++;
-		tetra++;;
+		tetra++;
+		
 		if (!(ft_checkline(line, count)))
 			printf("0");
 		if ((new = ft_checknewline(line, new, count)) == 2)
 			printf(" new line = 0");
 		if(((hash = ft_counthastag(line, hash)) > 4))
 			printf("erreur hash");
+		if (!(ft_numb_line(line, count)))
+			printf("erreur num_line");
+	}
+	if (count % 5 != 4)
+	{
+		printf("erreur line last bloc");
+		return (0);
 	}
 //	ft_stocktetra(fd);
 	printf("1");
