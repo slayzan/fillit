@@ -90,15 +90,14 @@ int main(int argc, char **argv)
 	{
 		count++;
 		tetra++;
-		
-		if (!(ft_checkline(line, count)))
-			printf("0");
-		if ((new = ft_checknewline(line, new, count)) == 2)
-			printf(" new line = 0");
-		if(((hash = ft_counthastag(line, hash)) > 4))
-			printf("erreur hash");
-		if (!(ft_numb_line(line, count)))
-			printf("erreur num_line");
+		if (!(ft_checkline(line, count))
+			|| ((new = ft_checknewline(line, new, count)) == 2)
+			|| ((hash = ft_counthastag(line, hash)) > 4)
+			|| (!(ft_numb_line(line, count))))
+		{
+			printf("error somewhere");
+			return (0);
+		}
 	}
 	if (count % 5 != 4)
 	{
