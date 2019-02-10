@@ -6,21 +6,22 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:49:36 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/07 15:45:33 by humarque         ###   ########.fr       */
+/*   Updated: 2019/02/10 17:48:12 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "fillit.h"
 
-static int		ft_checkline(char *line,int count)
+static int	ft_checkline(char *line, int count)
 {
 	int i;
 
 	i = 0;
-	if(count > 130)
+	if (count > 130)
 		return (0);
 	while (line[i])
 	{
-		if(line[i] != '.' && line[i] != '#')
+		if (line[i] != '.' && line[i] != '#')
 			return (0);
 		i++;
 	}
@@ -32,7 +33,7 @@ static int		ft_checkline(char *line,int count)
 	return (1);
 }
 
-int		ft_checknewline(char *line, int new, int count)
+int			ft_checknewline(char *line, int new, int count)
 {
 	if (count == 1 && line[0] == '\0')
 		return (2);
@@ -43,49 +44,42 @@ int		ft_checknewline(char *line, int new, int count)
 	return (new);
 }
 
-int	ft_counthastag(char *line, int hash)
+int			ft_counthastag(char *line, int hash)
 {
 	int i;
 
 	i = 0;
-	if (line[0] == '\0' )
+	if (line[0] == '\0')
 		hash = 0;
 	while (line[i])
 	{
 		if (line[i] == '#')
-		   hash++;
+			hash++;
 		i++;
 	}
 	return (hash);
 }
 
-int	ft_numb_line(char *line, int count)
+int			ft_numb_line(char *line, int count)
 {
 	if ((line[0] == '\0' && (count % 5 != 0))
 		|| ((count % 5 == 0) && line[0] != '\0'))
-			return (0);
+		return (0);
 	return (1);
 }
 
-int main(int argc, char **argv)
+int			ft_parser(int fd)
 {
-	int new;
-	int hash;
-	int count;
-	int tetra;
-	char *line;
-	int fd;
+	int		new;
+	int		hash;
+	int		count;
+	int		tetra;
+	char	*line;
 
 	tetra = 0;
 	count = 0;
 	new = 0;
 	hash = 0;
-	argc = 0;
-	if(!(fd = open(argv[1], O_RDONLY)))
-	{
-		close(fd);
-		exit(EXIT_FAILURE);
-	}
 	while (get_next_line(fd, &line) == 1)
 	{
 		count++;
@@ -94,16 +88,10 @@ int main(int argc, char **argv)
 			|| ((new = ft_checknewline(line, new, count)) == 2)
 			|| ((hash = ft_counthastag(line, hash)) > 4)
 			|| (!(ft_numb_line(line, count))))
-		{
-			printf("error somewhere");
 			return (0);
-		}
 	}
 	if (count % 5 != 4)
-	{
-		printf("erreur line last bloc");
 		return (0);
-	}
-//	ft_stocktetra(fd);
-	printf("1");
+	ft_stocktetra(fd);
+	return (1);
 }
