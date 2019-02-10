@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:49:36 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/10 17:48:12 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/02/10 19:11:43 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,29 @@ int			ft_checknewline(char *line, int new, int count)
 	return (new);
 }
 
-int			ft_counthastag(char *line, int hash)
+int			ft_counthastag(char *line, int *hash)
 {
 	int i;
+	int res;
 
+	res = 4;
 	i = 0;
 	if (line[0] == '\0')
-		hash = 0;
-	while (line[i])
 	{
-		if (line[i] == '#')
-			hash++;
-		i++;
+		if ((*hash) != 4)
+			return (0);
+		*hash = 0;
 	}
-	return (hash);
+	else
+	{
+		while (line[i])
+		{
+			if (line[i] == '#')
+				(*hash)++;
+			i++;
+		}
+	}
+	return (1);
 }
 
 int			ft_numb_line(char *line, int count)
@@ -86,12 +95,12 @@ int			ft_parser(int fd)
 		tetra++;
 		if (!(ft_checkline(line, count))
 			|| ((new = ft_checknewline(line, new, count)) == 2)
-			|| ((hash = ft_counthastag(line, hash)) > 4)
+			|| (!( ft_counthastag(line, &hash)))
 			|| (!(ft_numb_line(line, count))))
 			return (0);
 	}
 	if (count % 5 != 4)
 		return (0);
-	ft_stocktetra(fd);
+	//ft_stocktetra(fd);
 	return (1);
 }
