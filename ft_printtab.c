@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_printtab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/21 19:57:23 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/13 19:59:19 by humarque         ###   ########.fr       */
+/*   Created: 2019/02/13 19:51:19 by humarque          #+#    #+#             */
+/*   Updated: 2019/02/13 20:00:56 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
-# include "libft/libft.h"
+#include "fillit.h"
 
-int					main(int argc, char **argv);
-int					ft_parser(int fd);
-char				***ft_stocktetra(int fd, int count);
-void				ft_printtab(char ***tab);
-
-typedef struct		s_verif
+void	ft_printtab(char ***tab)
 {
-	int newline;
-}					t_verif;
+	int num;
+	int x;
 
-typedef struct		s_node
-{
-	int				number;
-	char			*str;
-	struct s_node	*next;
-	struct s_node	*previous;
-}					t_node;
+	num = 0;
+	x = 0;
 
-#endif
+	while (tab[num][x] != 0)
+	{
+		printf("%s", tab[num][x]);
+	}
+}
+
