@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:49:36 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/10 19:11:43 by humarque         ###   ########.fr       */
+/*   Updated: 2019/02/13 14:55:48 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,6 @@ int			ft_parser(int fd)
 	}
 	if (count % 5 != 4)
 		return (0);
-	//ft_stocktetra(fd);
+	ft_stocktetra(fd, count);
 	return (1);
 }

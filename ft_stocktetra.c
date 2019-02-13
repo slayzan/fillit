@@ -6,44 +6,45 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/08 16:08:51 by humarque         ###   ########.fr       */
+/*   Updated: 2019/02/13 15:37:24 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
 
-char	***ft_puttab(char **line, char ****tab, int x, int y, int num)
+char	***ft_malloc_tab(int count)
 {
-	int i;
+	char	***tab;
+	int		i;
+	int		j;
 
 	i = 0;
-	if(line[0] == '\0')
+	j = 0;
+	if (!(tab = (char ***)malloc(sizeof((char **) * (num + 1)))))
+		return (NULL);
+	while (i < count)
 	{
-		num++;
-		return (tab);
+		if (!(tab[i++] = (char **)malloc(4 * sizeof(char *))))
+			return (NULL);
+		while (j < 4)
+		{
+			if (!(tab[i][j++] = (char *)malloc(5 * sizeof(char))))
+				return (NULL);
+		}
 	}
-	while(line[i])
-	{
-		tab[num][x][y] = line[i];
-		y++;
-		i++;
-	}
-	tab[num][x][y] = '\0';
 	return (tab);
-}	
+}
 
-char	***ft_stocktetra(int fd)
+char	***ft_stocktetra(int fd, int count)
 {
-	char *line;
-	char ***tab;
-	int x;
-	int y;
-	int num;
+	char	*line;
+	char	***tab;
+	int		num;
+	int		x;
+	int		y;
 
 	x = 0;
 	y = 0;
-	num	
-	while (get_next_line(fd, &line) == 1)
-	{
-		ft_puttab(line,tab, &x, &y, &num);
-	}
+	num = count / 5 + 1;
+	printf("Number of blocs = %d\n", num);
+	tab = ft_malloc_tab(x, y, num);
 }
