@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/19 18:09:59 by humarque         ###   ########.fr       */
+/*   Updated: 2019/02/19 18:30:53 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
@@ -22,8 +22,8 @@ char	***ft_malloc_tab(int count)
 
 	i = 0;
 	j = 0;
-	num = count / 4 + 1;
-	space = (count / 4 + 1) - 1;
+	num = count / 5 + 1;
+	space = num - 1;
 	if (!(tab = (char ***)malloc(sizeof(char  **) * (space + 1))))
 		return (NULL);
 	while (i < space)
