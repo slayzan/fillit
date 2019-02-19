@@ -6,30 +6,37 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/13 20:15:24 by humarque         ###   ########.fr       */
+/*   Updated: 2019/02/19 18:09:59 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
 
-char	***ft_malloc_tab(int num)
+char	***ft_malloc_tab(int count)
 {
 	char	***tab;
 	int		i;
 	int		j;
+	int		num;
+	int space;
+
 
 	i = 0;
 	j = 0;
-	if (!(tab = (char ***)malloc(sizeof(char  **) * (num + 1))))
+	num = count / 4 + 1;
+	space = (count / 4 + 1) - 1;
+	if (!(tab = (char ***)malloc(sizeof(char  **) * (space + 1))))
 		return (NULL);
-	while (i < num)
+	while (i < space)
 	{
-		if (!(tab[i++] = (char **)malloc(4 * sizeof(char *))))
+		if (!(tab[i] = (char **)malloc(sizeof(char *) * (space + 1))))
 			return (NULL);
-		while (j < 4)
+		while (j < space)
 		{
-			if (!(tab[i][j++] = (char *)malloc(5 * sizeof(char))))
+			if (!(tab[i][j++] = (char *)malloc(sizeof(char) * (5))))
 				return (NULL);
 		}
+		i++;
+		j = 0;
 	}
 	return (tab);
 }
@@ -48,18 +55,27 @@ char	***ft_stocktetra(int fd, int count)
 	i = 0;
 	num = 0;
 	printf("Number of blocs = %d\n", num);
-	tab = ft_malloc_tab(count/ 5 + 1);
+	tab = ft_malloc_tab(count);
 	while (get_next_line(fd,&line) == 1)
 	{
-		while(line[i])
-		{
-			tab[num][x][y++] = line[i++];
-		}
-		x++;
+
 		if(line[0] == '\0')
 			num++;
+		else
+		{
+			while(line[i])
+			{
+				tab[num][x][y] = line[i];
+				y++;
+				i++;
+			}
+			tab[num][x][y] = '\0';
+			y = 0;
+			i = 0;
+			x++;
+		}
 	}
-	tab[num][x][y] = 0;
+	tab[num++][x][y] = 0;
 	ft_printtab(tab);
 	return (tab);
 }
