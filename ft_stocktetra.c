@@ -52,29 +52,31 @@ char	***ft_stocktetra(int fd2, int count, char *line)
 	x = 0;
 	y = 0;
 	i = 0;
-	num = 1;
+	num = 0;
 	tab = ft_malloc_tab(count);
 	while(get_next_line(fd2, &line) == 1)
 	{
-		printf(" line = %s\n",line);
+	//	printf("%s\n",line);
 		if (line[0] == '\0')
+		{
+			x = 0;
 			num++;
+		}
 		else
 		{
 			while (line[i])
 			{
-				tab[num][x][y] = line[i];
-				y++;
+				tab[num][x][i] = line[i];
 				i++;
 			}
-			tab[num][x][y] = '\0';
-			x++;
+			tab[num][x][i] = '\0';
+		//	printf("%s %d\n ", tab[num][x], x);
 			i = 0;
-			y = 0;
+			x++;
 		}
 	} 
 	printf(" num = %d\n" , num);
-	tab[num++][x][y] = 0;
+	tab[num++][0][0] = 0;
 	//ft_printtab(tab);
 	return (tab);
 }
