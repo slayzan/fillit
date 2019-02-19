@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 19:51:19 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/13 20:00:56 by humarque         ###   ########.fr       */
+/*   Updated: 2019/02/19 18:39:27 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_printtab(char ***tab)
 	num = 0;
 	x = 0;
 
-	while (tab[num][x] != 0)
+	while (tab[num][x])
 	{
 		printf("%s", tab[num][x]);
 	}
