@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:49:36 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/13 16:28:33 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/02/19 20:56:55 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int			ft_numb_line(char *line, int count)
 	return (1);
 }
 
-int			ft_parser(int fd)
+int			ft_parser(int fd, int fd2)
 {
 	int		new;
 	int		hash;
@@ -98,9 +98,10 @@ int			ft_parser(int fd)
 			|| (!( ft_counthastag(line, &hash)))
 			|| (!(ft_numb_line(line, count))))
 			return (0);
+		free(line);
 	}
 	if (count % 5 != 4)
 		return (0);
-	ft_stocktetra(fd, count);
+	ft_stocktetra(fd2, count, line);
 	return (1);
 }
