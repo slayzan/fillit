@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:57:23 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/20 12:05:41 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/02/20 18:33:43 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "libft/libft.h"
 # include "libft/get_next_line.h"
 
+int					ft_check_shape(char ***tab);
 int					main(int argc, char **argv);
 int					ft_parser(int fd, int fd2);
 char				***ft_stocktetra(int fd, int count, char *line);
