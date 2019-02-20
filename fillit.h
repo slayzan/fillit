@@ -6,13 +6,14 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:57:23 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/19 20:45:02 by humarque         ###   ########.fr       */
+/*   Updated: 2019/02/20 12:05:41 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 # include "libft/libft.h"
+# include "libft/get_next_line.h"
 
 int					main(int argc, char **argv);
 int					ft_parser(int fd, int fd2);

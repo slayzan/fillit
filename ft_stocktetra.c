@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/19 21:06:19 by humarque         ###   ########.fr       */
+/*   Updated: 2019/02/20 14:03:49 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
@@ -17,19 +17,18 @@ char	***ft_malloc_tab(int count)
 	int		i;
 	int		j;
 	int		num;
-	int space;
+	int		line;
 
 
 	i = 0;
 	j = 0;
 	num = count / 5 + 1;
-	printf("%d", num);
-	space = num * 4 + 1;
-	if (!(tab = (char ***)malloc(sizeof(char  **) * (( space + 1)))))
+	line = num * 4 + 1;
+	if (!(tab = (char ***)malloc(sizeof(char  **) * ((line + 1)))))
 		return (NULL);
-	while (i < space)
+	while (i < line)
 	{
-		if (!(tab[i] = (char **)malloc(sizeof(char *) * (space + 1))))
+		if (!(tab[i] = (char **)malloc(sizeof(char *) * (line + 1))))
 			return (NULL);
 		while (j < 5)
 		{
@@ -43,41 +42,39 @@ char	***ft_malloc_tab(int count)
 }
 
 char	***ft_stocktetra(int fd2, int count, char *line)
+// stocke les blocs de tetraminos dans un tableau tab[bloc][x][y] ou bloc est le nombre de blocs de tetraminos, x le nombre de lignes, et y le nombre de colonnes.
 {
 	char	***tab;
-	int		num;
+	int		bloc;
 	int		x;
-	int		y;
-	int 	i;
+	int 	y;
 	
 	x = 0;
 	y = 0;
-	i = 0;
-	num = 0;
+	bloc = 0;
 	tab = ft_malloc_tab(count);
 	while(get_next_line(fd2, &line) == 1)
 	{
-	//	printf("%s\n",line);
 		if (line[0] == '\0')
 		{
 			x = 0;
-			num++;
+			bloc++;
 		}
 		else
 		{
-			while (line[i])
+			while (line[y])
 			{
-				tab[num][x][i] = line[i];
-				i++;
+				tab[bloc][x][y] = line[y];
+				y++;
 			}
-			tab[num][x][i] = '\0';
-			printf("%s %d\n ", tab[num][x], x);
-			i = 0;
+			tab[bloc][x][y] = '\0';
+			printf("%s x = %d y = %d\n", tab[bloc][x], x, y);
+			y = 0;
 			x++;
 		}
 	} 
-	printf(" num = %d\n" , num);
-	tab[num++][0][0] = 0;
+	printf("Number of blocs = %d + 1\n" , bloc);
+	tab[bloc++][0][0] = 0;
 	//ft_printtab(tab);
 	return (tab);
 }
