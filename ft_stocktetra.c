@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/20 14:03:49 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/02/20 14:56:50 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
@@ -41,8 +41,37 @@ char	***ft_malloc_tab(int count)
 	return (tab);
 }
 
-char	***ft_stocktetra(int fd2, int count, char *line)
+int		ft_check_shape(char ***tab)
+{
+	int bloc;
+	int x;
+	int y;
+	int check;
+
+	check = 0;
+	bloc = 0;
+	x = 0;
+	y = 0;
+	while (tab[bloc][x][y])
+	{
+		if (tab[bloc][x][y] == '#')
+		{
+			if ((tab[bloc][x + 1][y] == '#' || tab[bloc][x - 1][y] == '#'
+					|| tab[bloc][x][y + 1] == '#' || tab[bloc][x][y - 1] == '#')
+					&& x >= 0 && y >= 0 && bloc >= 0)
+				check++;
+			printf("check = %d\n", check);
+			if (check == 4)
+				return (1);
+		}
+		x++;
+		y++;
+	}
+	return (0);
+}
+
 // stocke les blocs de tetraminos dans un tableau tab[bloc][x][y] ou bloc est le nombre de blocs de tetraminos, x le nombre de lignes, et y le nombre de colonnes.
+char	***ft_stocktetra(int fd2, int count, char *line)
 {
 	char	***tab;
 	int		bloc;
@@ -72,9 +101,10 @@ char	***ft_stocktetra(int fd2, int count, char *line)
 			y = 0;
 			x++;
 		}
-	} 
+	}	
 	printf("Number of blocs = %d + 1\n" , bloc);
 	tab[bloc++][0][0] = 0;
+	printf("tetra ok = %d\n", ft_check_shape(tab));
 	//ft_printtab(tab);
 	return (tab);
 }
