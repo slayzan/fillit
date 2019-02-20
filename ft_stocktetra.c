@@ -23,16 +23,17 @@ char	***ft_malloc_tab(int count)
 	i = 0;
 	j = 0;
 	num = count / 5 + 1;
-	space = num - 1;
-	if (!(tab = (char ***)malloc(sizeof(char  **) * (space + 1))))
+	printf("%d", num);
+	space = num * 4 + 1;
+	if (!(tab = (char ***)malloc(sizeof(char  **) * (( space + 1)))))
 		return (NULL);
 	while (i < space)
 	{
 		if (!(tab[i] = (char **)malloc(sizeof(char *) * (space + 1))))
 			return (NULL);
-		while (j < space)
+		while (j < 5)
 		{
-			if (!(tab[i][j++] = (char *)malloc(sizeof(char) * (2000))))
+			if (!(tab[i][j++] = (char *)malloc(sizeof(char) * (5))))
 				return (NULL);
 		}
 		i++;
@@ -70,7 +71,7 @@ char	***ft_stocktetra(int fd2, int count, char *line)
 				i++;
 			}
 			tab[num][x][i] = '\0';
-		//	printf("%s %d\n ", tab[num][x], x);
+			printf("%s %d\n ", tab[num][x], x);
 			i = 0;
 			x++;
 		}
