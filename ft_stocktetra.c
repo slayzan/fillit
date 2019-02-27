@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/26 17:34:45 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/02/27 16:32:59 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
@@ -68,15 +68,12 @@ char	***ft_stocktetra(int fd2, int count, char *line)
 				y++;
 			}
 			tab[bloc][x][y] = '\0';
-			printf("%s x = %d y = %d\n", tab[bloc][x], x, y);
 			y = 0;
 			x++;
 		}
 	}	
-//	printf("Number of blocs = %d + 1\n" , bloc);
-	tab[bloc++][0][0] = 0;
-	printf("bloc = %d\n", bloc);
-	printf("ft_check_shape valeur non ok normalement = %d\n", ft_check_shape(tab));
+	tab[bloc++][x++][y++] = 0;
+	printf("ft_check_shape = %d -> if 1 value is ok\n", ft_check_shape(tab, bloc));
 	//ft_printtab(tab);
 	return (tab);
 }

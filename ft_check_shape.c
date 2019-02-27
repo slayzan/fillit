@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_shape.c                                      :+:      :+:    :+:   */
+/*   ft_check_shape.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchamayo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:57:31 by mchamayo          #+#    #+#             */
-/*   Updated: 2019/02/26 17:34:08 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/02/27 16:33:26 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,15 @@ int		ft_check_tetradot(char ***tab)
 	while (tab[bloc][x][y])
 	{
 		if (tab[bloc][x][y] == '#')
-		{
 			hash = ft_count_hash(tab, bloc, x, y) + hash;
-		}
 		y++;
 		if (y == 4)
 		{
 			x++;
-			printf ("x = %d\n", x);
 			if (x == 4)
 			{
 				bloc++;
 				x = 0;
-				printf("bloc = %d, hash = %d, x = %d, y = %d\n", bloc, hash, x, y);
 			}
 			y = 0;
 		}
@@ -61,11 +57,14 @@ int		ft_check_tetradot(char ***tab)
 	return (hash);
 }
 
-int		ft_check_shape(char ***tab)
+int		ft_check_shape(char ***tab, int count)
 {
 	int hash;
+	int ret;
 
+	ret = 6 * count;
 	hash = ft_check_tetradot(tab);
-	printf("%d\n", hash);
+	if (hash >= ret)
+		return (1);
 	return (0);
 }
