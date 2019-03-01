@@ -21,8 +21,8 @@ int					ft_tetracking(char ***tab, int bloc);
 int					ft_check_shape(char ***tab, int count);
 int					main(int argc, char **argv);
 int					ft_parser(int fd, int fd2);
+int					ft_sizetetra(char ***array, int bloc);
 char				***ft_stocktetra(int fd, int count, char *line);
-void				ft_printtab(char ***tab);
 
 typedef struct		s_verif
 {

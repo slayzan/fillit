@@ -73,8 +73,9 @@ char	***ft_stocktetra(int fd2, int count, char *line)
 		}
 	}	
 	tab[bloc++][x++][y++] = 0;
-	printf("ft_check_shape = %d -> if 1 value is ok\n", ft_check_shape(tab, bloc));
-	ft_tetracking(tab, bloc);
+	//printf("ft_check_shape = %d -> if 1 value is ok\n", ft_check_shape(tab, bloc));
+	printf(" taille tetra = %d\n ",ft_sizetetra(tab, 3));
+	//int res;
 	//ft_printtab(tab);
 	return (tab);
 }
