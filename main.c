@@ -6,7 +6,7 @@
 /*   By: mchamayo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 16:59:54 by mchamayo          #+#    #+#             */
-/*   Updated: 2019/02/19 20:45:16 by humarque         ###   ########.fr       */
+/*   Updated: 2019/03/06 14:44:33 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 int		main(int argc, char **argv)
 {
 	int		fd;
-	int fd2;
-	int count;
-	char *line;
+	int		fd2;
+	int		count;
+	char	*line;
 
+	line = NULL;
 	argc = 0;
 	if (!(fd = open(argv[1], O_RDONLY)))
 	{
@@ -26,14 +27,16 @@ int		main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	if (!(fd2 = open(argv[1], O_RDONLY)))
-	{	
+	{
 		close(fd2);
 		exit(EXIT_FAILURE);
 	}
-	if (!(count = ft_parser(fd, fd2)))
+	if (!(count = ft_parser(fd)))
 		printf("error");
 	else
-		if(!ft_stocktetra(fd2, count, line)
-				exit(EXIT_FAILURE);
+	{
+		if (!ft_stocktetra(fd2, count, line))
+			exit(EXIT_FAILURE);
+	}
 	return (0);
 }

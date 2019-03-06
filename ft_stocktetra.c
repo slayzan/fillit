@@ -6,9 +6,10 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/28 13:57:21 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/03/06 14:43:07 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "fillit.h"
 
 char	***ft_malloc_tab(int count)
@@ -19,12 +20,11 @@ char	***ft_malloc_tab(int count)
 	int		num;
 	int		line;
 
-
 	i = 0;
 	j = 0;
 	num = count / 5 + 1;
 	line = num * 4 + 1;
-	if (!(tab = (char ***)malloc(sizeof(char  **) * ((line + 1)))))
+	if (!(tab = (char ***)malloc(sizeof(char **) * ((line + 1)))))
 		return (NULL);
 	while (i < line)
 	{
@@ -41,19 +41,22 @@ char	***ft_malloc_tab(int count)
 	return (tab);
 }
 
-// stocke les blocs de tetraminos dans un tableau tab[bloc][x][y] ou bloc est le nombre de blocs de tetraminos, x le nombre de lignes, et y le nombre de colonnes.
+// stocke les blocs de tetraminos dans un tableau tab[bloc][x][y]
+// ou bloc est le nombre de blocs de tetraminos, x le nombre de lignes,
+// et y le nombre de colonnes.
+
 char	***ft_stocktetra(int fd2, int count, char *line)
 {
 	char	***tab;
 	int		bloc;
+	int		y;
 	int		x;
-	int 	y;
-	
+
 	x = 0;
 	y = 0;
 	bloc = 0;
 	tab = ft_malloc_tab(count);
-	while(get_next_line(fd2, &line) == 1)
+	while (get_next_line(fd2, &line) == 1)
 	{
 		if (line[0] == '\0')
 		{
@@ -71,11 +74,9 @@ char	***ft_stocktetra(int fd2, int count, char *line)
 			y = 0;
 			x++;
 		}
-	}	
+	}
 	tab[bloc++][x++][y++] = 0;
-	//printf("ft_check_shape = %d -> if 1 value is ok\n", ft_check_shape(tab, bloc));
-	printf(" taille tetra = %d\n ",ft_sizetetra(tab, 2));
-	//int res;
-	//ft_printtab(tab);
-	
+	printf("checkshape = %d -> needs 1\n", ft_check_shape(tab, bloc));
+	printf("taille tetra = %d\n", ft_sizetetra(tab, 2, 0, 0));
+	return (0);
 }

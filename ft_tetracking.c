@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 16:39:38 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/28 18:30:42 by humarque         ###   ########.fr       */
+/*   Updated: 2019/03/06 14:22:47 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char 	**ft_malloctab(int len_array)
 			save = i;
 			i = 0;
 			while (i < save)
-				free(tab[i++];
+				free(tab[i++]);
 		}
 		while (tab[i][j])
 			tab[i][j++] = '.';
@@ -90,6 +90,6 @@ int ft_tetracking(int bloc)
 
   len_array = ft_sqrt((bloc * 4) + 1);
   printf("sqrt = %d\n", len_array);
-  tab = ft_malloc_tab(len_array);
-  
+  tab = ft_malloctab(len_array);
+ return (0); 
 }

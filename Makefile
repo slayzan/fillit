@@ -6,7 +6,7 @@
 #    By: humarque <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/07 14:38:29 by humarque          #+#    #+#              #
-#    Updated: 2019/02/28 13:58:12 by mchamayo         ###   ########.fr        #
+#    Updated: 2019/03/06 14:25:31 by mchamayo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ $(NAME):
 	clang -o $(NAME) ft_stocktetra.o  ft_parser.o ft_check_shape.o main.o ft_tetracking.o -I libft/includes -L libft/ -lft
 
 clean:
-	rm ft_tetracking.o ft_stocktetra.o ft_parser.o ft_check_shape.o main.o ft_tetracking.o
+	rm ft_tetracking.o ft_stocktetra.o ft_parser.o ft_check_shape.o main.o
 
 fclean:
 	rm $(NAME)
