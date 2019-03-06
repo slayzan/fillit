@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 18:53:49 by humarque          #+#    #+#             */
-/*   Updated: 2019/01/21 20:27:05 by humarque         ###   ########.fr       */
+/*   Updated: 2019/03/06 12:53:57 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int					ft_tolower(int c);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 int					ft_strequ(char const *s1, char const *s2);
 int					ft_strncmp(const char *s1, const char *s2, unsigned int n);
+int					ft_sqrt(int nb);
 char				*ft_strcpy(char *dest, char const *src);
 char				*ft_strncpy(char *dest, char const *src, unsigned int n);
 char				*ft_strncat(char *dest, const char *src, size_t nb);
