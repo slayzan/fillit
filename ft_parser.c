@@ -102,6 +102,5 @@ int			ft_parser(int fd, int fd2)
 	}
 	if (count % 5 != 4)
 		return (0);
-	ft_stocktetra(fd2, count, line);
-	return (1);
+	return (count);
 }

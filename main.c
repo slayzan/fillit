@@ -16,6 +16,8 @@ int		main(int argc, char **argv)
 {
 	int		fd;
 	int fd2;
+	int count;
+	char *line;
 
 	argc = 0;
 	if (!(fd = open(argv[1], O_RDONLY)))
@@ -24,10 +26,14 @@ int		main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	if (!(fd2 = open(argv[1], O_RDONLY)))
+	{	
+		close(fd2);
 		exit(EXIT_FAILURE);
-	if (!(ft_parser(fd, fd2)))
+	}
+	if (!(count = ft_parser(fd, fd2)))
 		printf("error");
 	else
-		printf("CHECK_ERROR_OK");
+		if(!ft_stocktetra(fd2, count, line)
+				exit(EXIT_FAILURE);
 	return (0);
 }
