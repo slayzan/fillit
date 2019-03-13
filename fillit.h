@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:57:23 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/13 15:55:12 by humarque         ###   ########.fr       */
+/*   Updated: 2019/03/13 19:00:32 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int					ft_check_shape(char ***tab, int count);
 int					main(int argc, char **argv);
 int					ft_parser(int fd);
 int					ft_sizetetra(char ***array, int bloc, int x, int y);
+char				***ft_tetraclean(char ***tab);
 char				***ft_stocktetra(int fd, int count, char *line);
+void				printtab(char ***tab);
+
 
 typedef struct		s_tra
 {
