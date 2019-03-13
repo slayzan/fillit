@@ -6,7 +6,7 @@
 /*   By: mchamayo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:57:31 by mchamayo          #+#    #+#             */
-/*   Updated: 2019/03/06 14:31:29 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/03/13 16:47:11 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ int		ft_check_tetradot(char ***tab, int x, int y)
 	while (tab[bloc][x][y])
 	{
 		if (tab[bloc][x][y] == '#')
+		{	
 			hash = ft_count_hash(tab, bloc, x, y) + hash;
+		}
 		y++;
 		if (y == 4)
 		{

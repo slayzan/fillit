@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/12 19:19:34 by humarque         ###   ########.fr       */
+/*   Updated: 2019/03/13 16:44:20 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,16 @@ char	***ft_stocktetra(int fd2, int count, char *line)
 		}
 	}
 	tab[bloc++][x++][y++] = 0;
-	x = 0;
+/*	NE PAS SORTIR DES COMMENTAIRES SINON FAIT BEUG CHECK SHAPE
+ 	x = 0;
 	bloc = 0;
 	y = 0;
 	while (tab[bloc])
 	{
 		while (tab[bloc][x][y])
 		{
-			printf("%c", tab[bloc][x][y++]);
-
+//			printf("%c", tab[bloc][x][y++]);
+			y++;
 		}
 		x++;
 		y = 0;
@@ -94,24 +95,9 @@ char	***ft_stocktetra(int fd2, int count, char *line)
 			x = 0;
 			bloc++;
 		}
-	}
-	printf("checkshape = %d -> needs 1\n", ft_check_shape(tab, bloc));
-	printf("taille tetra = %d\n", ft_sizetetra(tab, 2, 0, 0));
-	return (tab);
+	}*/
+//	printf("taille tetra = %d\n", ft_sizetetra(tab, 2, 0, 0));
+	if (ft_check_shape(tab, bloc) == 1)
+		return (tab);
+	return (0);
 }
-
-char ***ft_TabToLeft(char ***tab, int x, int y)
-{
-	int bloc;
-	int i;
-	int j;
-
-	bloc = 0;
-	i = 0;
-	j = 0;
-	while (tab[bloc])
-	{
-		 				
-	}
-}
-
