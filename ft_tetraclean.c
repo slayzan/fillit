@@ -6,7 +6,7 @@
 /*   By: mchamayo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:52:24 by mchamayo          #+#    #+#             */
-/*   Updated: 2019/03/13 19:15:47 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/03/13 19:17:45 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,24 @@ char	***ft_TabToLeft(int ymin, char ***tab)
 	x = 0;
 	y = 0;
 	bloc = 0;
-	while (tab[bloc][x][y])
+	if (ymin > 0)
 	{
-		if (tab[bloc][x][y] == '#')
+		while (tab[bloc][x][y])
 		{
-			tab[bloc][x][y - ymin] = tab[bloc][x][y];
-			tab[bloc][x][y] = '.';
+			if (tab[bloc][x][y] == '#')
+			{
+				tab[bloc][x][y - ymin] = tab[bloc][x][y];
+				tab[bloc][x][y] = '.';
+			}
+			y++;
+			replace = ymin - 1;
+			if (y == 4)
+			{
+				x++;
+				y = 0;
+			}
 		}
-		y++;
-		replace = ymin - 1;
-		if (y == 4)
-		{
-			x++;
-			y = 0;
-		}
+		return (tab);
 	}
 	return (tab);
 }
