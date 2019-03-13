@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/13 16:44:20 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/03/13 17:16:03 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,33 @@ char	***ft_malloc_tab(int count)
 		j = 0;
 	}
 	return (tab);
+}
+
+void	printtab(char ***tab)
+{
+	int x;
+	int y;
+	int bloc;
+
+	bloc = 0;
+	x = 0;
+	y = 0;
+
+	while (tab[bloc][x][y])
+	{
+		printf("%c", tab[bloc][x][y]);
+		y++;
+		if (y == 4)
+		{
+			x++;
+			if (x == 4)
+			{
+				bloc++;
+				x = 0;
+			}
+			y = 0;
+		}
+	}
 }
 
 // stocke les blocs de tetraminos dans un tableau tab[bloc][x][y]
@@ -76,28 +103,10 @@ char	***ft_stocktetra(int fd2, int count, char *line)
 		}
 	}
 	tab[bloc++][x++][y++] = 0;
-/*	NE PAS SORTIR DES COMMENTAIRES SINON FAIT BEUG CHECK SHAPE
- 	x = 0;
-	bloc = 0;
-	y = 0;
-	while (tab[bloc])
-	{
-		while (tab[bloc][x][y])
-		{
-//			printf("%c", tab[bloc][x][y++]);
-			y++;
-		}
-		x++;
-		y = 0;
-
-		if(x >= 4)
-		{
-			x = 0;
-			bloc++;
-		}
-	}*/
-//	printf("taille tetra = %d\n", ft_sizetetra(tab, 2, 0, 0));
+	printtab(tab);
 	if (ft_check_shape(tab, bloc) == 1)
 		return (tab);
 	return (0);
 }
+
+
