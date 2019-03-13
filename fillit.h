@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:57:23 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/06 14:40:47 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/03/13 15:55:12 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,14 @@ int					ft_parser(int fd);
 int					ft_sizetetra(char ***array, int bloc, int x, int y);
 char				***ft_stocktetra(int fd, int count, char *line);
 
-typedef struct		s_verif
+typedef struct		s_tra
 {
-	int newline;
-}					t_verif;
-
-typedef struct		s_node
-{
-	int				number;
-	char			*str;
-	struct s_node	*next;
-	struct s_node	*previous;
-}					t_node;
+	char			**tet;
+	int 			x;
+	int				y;
+	char			letter;
+	struct s_tra	*next;
+	struct s_tra	*previous;
+}					t_tra;
 
 #endif

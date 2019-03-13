@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 16:39:38 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/06 14:22:47 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/03/12 18:27:52 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int		ft_sizetetra(char ***array, int bloc, int x, int y)
 			}
 		}
 	}
-
 	return((stockx >= stocky) ? stockx : stocky);
 
 }
@@ -93,3 +92,5 @@ int ft_tetracking(int bloc)
   tab = ft_malloctab(len_array);
  return (0); 
 }
+
+
