@@ -34,6 +34,8 @@ char	***ft_TabToUp(int xmin, char ***tab)
 			if (x == 4)
 			{
 				y++;
+				if (y == 4)
+					bloc++;
 				x = 0;
 			}
 		}
@@ -64,6 +66,8 @@ char	***ft_TabToLeft(int ymin, char ***tab)
 			if (y == 4)
 			{
 				x++;
+				if (x == 4)
+					bloc++;
 				y = 0;
 			}
 		}
@@ -116,10 +120,11 @@ int		ft_search_ymin(char ***tab)
 
 char	***ft_tetraclean(char ***tab)
 {
-	printf("ymin = %d\n", ft_search_ymin(tab));
-	printf("xmin = %d\n", ft_search_xmin(tab));
-	ft_TabToLeft(ft_search_ymin(tab), tab);
-	ft_TabToUp(ft_search_xmin(tab), tab);
-	printtab(tab);
+	while (***tab)
+	{
+		ft_TabToLeft(ft_search_ymin(tab), tab);
+		ft_TabToUp(ft_search_xmin(tab), tab);
+		tab++;
+	}
 	return (tab);
 }

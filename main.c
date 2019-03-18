@@ -37,6 +37,7 @@ int		main(int argc, char **argv)
 	else
 	{
 		tab = ft_stocktetra(fd2, count, line);
+		printtab(tab);
 		if (!tab)
 			exit(EXIT_FAILURE);
 		else
