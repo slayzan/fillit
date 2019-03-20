@@ -27,5 +27,6 @@ typedef struct		s_tra
 
 int			main(int argc, char **argv);
 int			ft_parser(int fd);
+char			**ft_stock_tab(int fd, int count, char *line);
 
 #endif

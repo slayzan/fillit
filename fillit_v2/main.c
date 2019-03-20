@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 	int fd2;
 	char *line;
 	int count;
+	char **tab;
 
 	line = NULL;
 	argc = 0;
@@ -33,5 +34,9 @@ int	main(int argc, char **argv)
 	}
 	if (!(count = ft_parser(fd)))
 		ft_putstr("error");
+	else
+	{
+		tab = ft_stock_tab(fd2, count, line);
+	}
 	return (0);
 }
