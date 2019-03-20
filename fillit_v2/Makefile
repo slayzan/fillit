@@ -5,7 +5,7 @@
 #                                                     +:+ +:+         +:+      #
 #    By: humarque <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/03/20 14:37:44 by humarque          #+#    #+#              #
+#    Created: 2019/03/20 14:37:44 by mchamayo          #+#    #+#              #
 #    Updated: 2019/03/20 14:37:49 by humarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -21,7 +21,7 @@ flags = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-	clang $(flags) -I libft/includes -o $(source) -c $(objets)
+	clang $(flags) -I libft/includes -o $(objets) -c $(source)
 	clang -o $(NAME) $(objets)  -I ../libft/includes -L ../libft/ -lft
 
 clean:

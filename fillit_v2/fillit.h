@@ -16,7 +16,7 @@
 
 typedef struct		s_tra
 {
-	char		**tet,
+	char		**tet;
 	int		x;
 	int		y;
 	char		letter;
