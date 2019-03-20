@@ -13,6 +13,7 @@
 # define FILLIT_H
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
+# include <stdio.h>
 
 typedef struct		s_tra
 {
@@ -25,5 +26,6 @@ typedef struct		s_tra
 }			t_tra;
 
 int			main(int argc, char **argv);
+int			ft_parser(int fd);
 
 #endif

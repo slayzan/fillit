@@ -12,16 +12,17 @@
 
 NAME = test_fillit
 
-source = main.c
+source = main.c ft_parser.c
 
-objets = main.o
+objets = main.o ft_parser.o
 
 flags = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME):
-	clang $(flags) -I libft/includes -o $(objets) -c $(source)
+	clang $(flags) -I libft/includes -o main.o -c main.c
+	clang $(flags) -I libft/includes -o ft_parser.o -c ft_parser.c
 	clang -o $(NAME) $(objets)  -I ../libft/includes -L ../libft/ -lft
 
 clean:

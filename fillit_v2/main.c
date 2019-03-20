@@ -32,6 +32,6 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	if (!(count = ft_parser(fd)))
-		print("error");
+		ft_putstr("error");
 	return (0);
 }
