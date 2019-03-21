@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/13 19:15:49 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/03/21 15:13:02 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	***ft_malloc_tab(int count)
 	return (tab);
 }
 
-void	printtab(char ***tab)
+/*void	printtab(char ***tab)
 {
 	int x;
 	int y;
@@ -70,7 +70,7 @@ void	printtab(char ***tab)
 	}
 	printf("\n");
 }
-
+*/
 // stocke les blocs de tetraminos dans un tableau tab[bloc][x][y]
 // ou bloc est le nombre de blocs de tetraminos, x le nombre de lignes,
 // et y le nombre de colonnes.
@@ -105,8 +105,8 @@ char	***ft_stocktetra(int fd2, int count, char *line)
 			x++;
 		}
 	}
-	tab[bloc++][x++][y++] = 0;
-	printtab(tab);
+tab[bloc++][x++][y++] = 0;
+//	printtab(tab);
 	if (ft_check_shape(tab, bloc) == 1)
 	{
 		if (!ft_tetraclean(tab))

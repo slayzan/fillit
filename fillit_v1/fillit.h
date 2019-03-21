@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:57:23 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/13 19:00:32 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/03/21 15:25:41 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../libft/get_next_line.h"
 # include <math.h>
 
-int					ft_tetracking(int bloc);
+int					ft_tetracking(int bloc, char ***tetrab);
 int					ft_check_shape(char ***tab, int count);
 int					main(int argc, char **argv);
 int					ft_parser(int fd);

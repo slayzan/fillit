@@ -6,40 +6,44 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 16:39:38 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/21 14:57:12 by humarque         ###   ########.fr       */
+/*   Updated: 2019/03/21 15:40:40 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char 	**ft_malloctab(int len_array)
+static char 	**ft_malloctab(int len_array, char **tab)
 {
-	char **tab;
 	int i;
 	int j;
 	int save;
 
 	i = 0;
 	j = 0;
-	if (!(tab = (char **)ft_memalloc(sizeof(char *) * (len_array))))
+	if (!(tab = (char **)ft_memalloc(sizeof(char *) * (20 + 1))))
 	{
 		free(tab);
 		return(NULL);
 	}
 	while (tab[i])
 	{
-		if (!(tab[i++] =(char *)ft_memalloc(sizeof(char) * (len_array))))
+		if (!(tab[i++] =(char *)ft_memalloc(sizeof(char) * (20 + 1))))
 		{
 			save = i;
 			i = 0;
 			while (i < save)
 				free(tab[i++]);
 		}
+	}
+	tab[i] = 0;
+	i = 0;
+	while (tab[i] != 0)
+	{
 		while (tab[i][j])
 			tab[i][j++] = '.';
+		i++;
 		j = 0;
 	}
-	tab[i++][j] = 0;
 
 	return (tab);
 }
@@ -99,6 +103,7 @@ char 	**ft_firsttetra(char **tab, int bloc, char ***tetrab)
 
 	while (put != 4)
 	{
+		printf("%d\n", y);
 		if (tetrab[bloc][x][y] == '#' && tab[i][j] == '.')
 		{
 			tab[i + x][j + y] = '#';
@@ -123,10 +128,11 @@ void	ft_print(char **tab)
 
 	i = 0;
 	j = 0;
-	while (**tab)
+	while (tab)
 	{
 		while (tab[i][j])
 			printf("%c", tab[i][j++]);
+		printf("\n");
 		i++;
 		j = 0;
 	}
@@ -137,9 +143,11 @@ int ft_tetracking(int bloc, char ***tetrab)
   int len_array;
   char **tab;
 
-  len_array = ft_sqrt((bloc * 4) + 1);
-  tab = ft_malloctab(len_array);
-  ft_print(ft_firsttetra(tab, bloc, tetrab));
+  len_array = 4;
+  tab = ft_malloctab(len_array, tab);
+  printf("Fsds");
+  ft_print(tab);
+  //ft_firsttetra(tab, bloc, tetrab);
  return (0); 
 }
 
