@@ -6,18 +6,19 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 16:39:38 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/21 15:40:40 by humarque         ###   ########.fr       */
+/*   Updated: 2019/03/21 16:30:57 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
+/*
 static char 	**ft_malloctab(int len_array, char **tab)
 {
 	int i;
 	int j;
 	int save;
 
+	len_array = 0;
 	i = 0;
 	j = 0;
 	if (!(tab = (char **)ft_memalloc(sizeof(char *) * (20 + 1))))
@@ -37,14 +38,44 @@ static char 	**ft_malloctab(int len_array, char **tab)
 	}
 	tab[i] = 0;
 	i = 0;
+	
 	while (tab[i] != 0)
 	{
 		while (tab[i][j])
-			tab[i][j++] = '.';
-		i++;
+		{	tab[i][j++] = '.';
+		}
+			i++;
 		j = 0;
 	}
 
+	return (tab);
+}*/
+
+char **ft_malloctab(int len_array, char **tab)
+{
+	int x;
+	int y;
+
+	x = 0;
+	y = 0;
+	if (!(tab = (char **)ft_memalloc(sizeof(char *) * len_array + 1)))
+		return (NULL);
+	while (y < len_array)
+	{
+		if (!(tab[y] = (char *)ft_memalloc(sizeof(char) * len_array + 1)))
+			return (NULL);
+		y++;
+	}
+	y = 0;
+	while (x < len_array)
+	{
+		while (y < len_array)
+			tab[x][y++] = '.';
+		tab[x][y] = '\0';
+		y = 0;
+		x++;
+	}
+	tab[x] = NULL;
 	return (tab);
 }
 
@@ -121,34 +152,32 @@ char 	**ft_firsttetra(char **tab, int bloc, char ***tetrab)
 	}
 	return (tab);
 }
+
 void	ft_print(char **tab)
 {
 	int i;
-	int j;
 
 	i = 0;
-	j = 0;
-	while (tab)
+	while (tab[i] != NULL)
 	{
-		while (tab[i][j])
-			printf("%c", tab[i][j++]);
-		printf("\n");
+		ft_putstr(tab[i]);
+		ft_putchar('\n');
 		i++;
-		j = 0;
 	}
 }
 
-int ft_tetracking(int bloc, char ***tetrab)
+int ft_tetracking(char ***tetrab)
 {
-  int len_array;
-  char **tab;
+  	char **tab;
+	int		len_array;
 
-  len_array = 4;
-  tab = ft_malloctab(len_array, tab);
-  printf("Fsds");
-  ft_print(tab);
-  //ft_firsttetra(tab, bloc, tetrab);
- return (0); 
+	len_array = 10;
+	tab = NULL;
+	tetrab = NULL;
+	tab = ft_malloctab(len_array, tab);
+	ft_print(tab);
+	//ft_firsttetra(tab, bloc, tetrab);
+	return (0); 
 }
 
 
