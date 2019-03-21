@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 16:39:38 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/21 16:30:57 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/03/21 17:27:19 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int		ft_sizetetra(char ***array, int bloc, int x, int y)
 
 }
 
-char 	**ft_firsttetra(char **tab, int bloc, char ***tetrab)
+int 	ft_firsttetra(char **tab, int bloc, char ***tetrab, int len_array)
 {
 	int x;
 	int y;
@@ -131,26 +131,25 @@ char 	**ft_firsttetra(char **tab, int bloc, char ***tetrab)
 	i = 0;
 	j = 0;
 	put = 0;
-
 	while (put != 4)
 	{
-		printf("%d\n", y);
-		if (tetrab[bloc][x][y] == '#' && tab[i][j] == '.')
+		if (tetrab[bloc][x][y] == '#' && tab[i + x][j + y] == '.')
 		{
 			tab[i + x][j + y] = '#';
 			tetrab[bloc][x][y] = '.';
 			put++;
 		}
-
-		while (tetrab[bloc][x][y] != '#' && tetrab[bloc][x][y])
+		while (tetrab[bloc][x][y] != '#'  &&  tetrab[bloc][x][y])
 			y++;
-		if(y >= 3 && tetrab[bloc][x][y] != '#')
+		if (((i + x) > len_array) || (j + y) > len_array)
+			return (0);
+		if(y == 4  && tetrab[bloc][x][y] != '#')
 		{
 			y = 0;
 			x++;
 		}
 	}
-	return (tab);
+	return (1);
 }
 
 void	ft_print(char **tab)
@@ -170,13 +169,15 @@ int ft_tetracking(char ***tetrab)
 {
   	char **tab;
 	int		len_array;
+	int res;
 
-	len_array = 10;
+	len_array = 2;
 	tab = NULL;
-	tetrab = NULL;
 	tab = ft_malloctab(len_array, tab);
+	//ft_print(tab);
+	res = ft_firsttetra(tab, 0, tetrab, len_array);
 	ft_print(tab);
-	//ft_firsttetra(tab, bloc, tetrab);
+	printf("res = %d\n", res);
 	return (0); 
 }
 
