@@ -6,7 +6,7 @@
 /*   By: mchamayo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 16:59:54 by mchamayo          #+#    #+#             */
-/*   Updated: 2019/03/21 16:30:52 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/03/21 17:38:50 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		main(int argc, char **argv)
 	{
 		if(!(tab = ft_stocktetra(fd2, count, line)))
 			return (0);
-		ft_tetracking(tab);
+		ft_tetracking(tab, 2);
 
 	}
 	return (0);

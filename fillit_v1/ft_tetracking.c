@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 16:39:38 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/21 17:27:19 by humarque         ###   ########.fr       */
+/*   Updated: 2019/03/21 18:42:51 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,20 +165,24 @@ void	ft_print(char **tab)
 	}
 }
 
-int ft_tetracking(char ***tetrab)
+void	ft_puttetra(char **tab, char ***tetrab, int len_array, int bloc)
+{
+	tab = ft_malloctab(len_array, tab);
+	if(!(ft_firsttetra(tab,0,tetrab,len_array)))
+		 (ft_puttetra(tab, tetrab, len_array + 1, bloc));
+
+}
+
+
+void ft_tetracking(char ***tetrab, int len_array)
 {
   	char **tab;
-	int		len_array;
-	int res;
+	int bloc;
 
-	len_array = 2;
-	tab = NULL;
-	tab = ft_malloctab(len_array, tab);
-	//ft_print(tab);
-	res = ft_firsttetra(tab, 0, tetrab, len_array);
-	ft_print(tab);
-	printf("res = %d\n", res);
-	return (0); 
+	bloc = 0;
+	ft_puttetra(tab,tetrab, len_array,bloc);
+
+	
 }
 
 
