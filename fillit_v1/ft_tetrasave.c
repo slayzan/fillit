@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 16:39:38 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/26 16:43:57 by humarque         ###   ########.fr       */
+/*   Updated: 2019/03/26 15:32:44 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,7 @@ char **ft_malloctab(int len_array, char **tab)
 	x = 0;
 	y = 0;
 	if (!(tab = (char **)ft_memalloc(sizeof(char *) * len_array + 1)))
-	{
-		free(tab);
 		return (NULL);
-	}
 	while (y < len_array)
 	{
 		if (!(tab[y] = (char *)ft_memalloc(sizeof(char) * len_array + 1)))
@@ -82,6 +79,44 @@ char **ft_malloctab(int len_array, char **tab)
 	return (tab);
 }
 
+int		ft_sizetetra(char ***array, int bloc, int x, int y)
+{
+	int sizex;
+	int sizey;
+	int stocky;
+	int stockx;
+
+	sizey = 0;
+	sizex = 0;
+	stockx = 0;
+	stocky = 0;
+	while (x < 3)
+	{
+		while (array[bloc][x][y])
+		{
+			if (array[bloc][x][y] == '#')
+			{
+				if(array[bloc][x][y + 1] == '#'
+						&& array[bloc][x + 1][y]
+						&& array[bloc][x + 1][y - 1] == '#')
+					return (4);
+				sizey++;
+				sizex = 1;
+			}
+			y++;
+			if (y== 4)
+			{
+				x++;
+				y = 0;
+				stocky = (sizey > stocky) ? sizey : stocky;
+				sizey = 0;
+				stockx = (sizex) ? stockx++ : stockx;
+			}
+		}
+	}
+	return((stockx >= stocky) ? stockx : stocky);
+
+}
 
 int 	ft_firsttetra(char **tab, int bloc, char ***tetrab, int len_array)
 {
@@ -98,22 +133,18 @@ int 	ft_firsttetra(char **tab, int bloc, char ***tetrab, int len_array)
 	put = 0;
 	while (put != 4)
 	{
-		printf("%d",y);
-		//printf("%c", tab[x][y - 1]);
-		if (tetrab[bloc][x][y] == '#' && tab[x][y] == '.')
+		if (tetrab[bloc][x][y] == '#' && tab[i + x][j + y] == '.')
 		{
 			tab[i + x][j + y] = '#';
 			tetrab[bloc][x][y] = '.';
 			put++;
 		}
 		while (tetrab[bloc][x][y] != '#'  &&  tetrab[bloc][x][y])
-		{
+		{	
 			y++;
 		}
 		if (((i + x) > len_array) || (j + y) > len_array)
-		{
 			return (0);
-		}
 		if(y == 4  && tetrab[bloc][x][y] != '#')
 		{
 			y = 0;
@@ -141,34 +172,12 @@ char **freetab(char **tab, int len_array)
 	int i;
 
 	i = 0;
-	while (i <= len_array)
+	while (i <= len_array + 1)
 	{
 		free(tab[i++]);
 	}
 	free(tab);
 	return (tab);
-}
-/*void	test(char **tab, char ***tetrab, int len_array)
-{
-	tab = ft_malloctab(len_array,tab);
-
-}
-*/
-
-void	ft_track(char ***tetrab, char **tab, int len_array, int bloc)
-{
-	tab = NULL;
-	if(!(tab = ft_malloctab(len_array, tab)))
-	{
-		freetab(tab,len_array);
-		exit(EXIT_FAILURE);
-	}
-	if((ft_firsttetra(tab,bloc,tetrab,len_array) == 0))
-	{
-		freetab(tab,len_array);
-		ft_track(tetrab,tab,len_array + 1, bloc);
-	}
-
 }
 
 void ft_tetracking(char ***tetrab, int len_array)
@@ -177,9 +186,13 @@ void ft_tetracking(char ***tetrab, int len_array)
 	int bloc;
 	
 	tab = NULL;	
+	if(!(tab = ft_malloctab(len_array, tab)))
+		exit(EXIT_FAILURE);
 	bloc = 0;
-	ft_track(tetrab,tab,len_array,bloc);
-//	ft_print(tab);
+	if(!(ft_firsttetra(tab,bloc,tetrab,len_array)))
+	{
+		freetab(tab,len_array);
+	}
+	else
+		ft_print(tab);
 }
-
-
