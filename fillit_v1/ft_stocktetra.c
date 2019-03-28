@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/21 15:13:02 by humarque         ###   ########.fr       */
+/*   Updated: 2019/03/28 18:45:50 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,7 @@ char	***ft_stocktetra(int fd2, int count, char *line)
 			x++;
 		}
 	}
-tab[bloc++][x++][y++] = 0;
-//	printtab(tab);
+	tab[bloc++][x++][y++] = 0;
 	if (ft_check_shape(tab, bloc) == 1)
 	{
 		if (!ft_tetraclean(tab))

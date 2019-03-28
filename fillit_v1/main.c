@@ -6,7 +6,7 @@
 /*   By: mchamayo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 16:59:54 by mchamayo          #+#    #+#             */
-/*   Updated: 2019/03/26 15:32:16 by humarque         ###   ########.fr       */
+/*   Updated: 2019/03/28 19:22:42 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		main(int argc, char **argv)
 	int		count;
 	char	*line;
 	char	***tab;
+	t_point *point;
 
 	line = NULL;
 	argc = 0;
@@ -38,8 +39,8 @@ int		main(int argc, char **argv)
 	{
 		if(!(tab = ft_stocktetra(fd2, count, line)))
 			return (0);
-		ft_tetracking(tab, 2);
-
+		point = ft_findpoint(tab,0);
+		printf("maxX = %d, minX = %d, maxy = %d, miny = %d",point->maxx,point->minx,point->maxy,point->miny);
 	}
 	return (0);
 }
