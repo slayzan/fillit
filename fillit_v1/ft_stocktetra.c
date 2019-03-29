@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/28 18:45:50 by humarque         ###   ########.fr       */
+/*   Updated: 2019/03/29 18:44:59 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,36 +41,6 @@ char	***ft_malloc_tab(int count)
 	return (tab);
 }
 
-/*void	printtab(char ***tab)
-{
-	int x;
-	int y;
-	int bloc;
-
-	bloc = 0;
-	x = 0;
-	y = 0;
-
-	while (tab[bloc][x][y])
-	{
-		printf("%c", tab[bloc][x][y]);
-		y++;
-		if (y == 4)
-		{
-			printf("\n");
-			x++;
-			if (x == 4)
-			{
-				printf("\n");
-				bloc++;
-				x = 0;
-			}
-			y = 0;
-		}
-	}
-	printf("\n");
-}
-*/
 // stocke les blocs de tetraminos dans un tableau tab[bloc][x][y]
 // ou bloc est le nombre de blocs de tetraminos, x le nombre de lignes,
 // et y le nombre de colonnes.
@@ -110,9 +80,22 @@ char	***ft_stocktetra(int fd2, int count, char *line)
 	{
 		if (!ft_tetraclean(tab))
 			return 0;
-		return (tab);
+		return (tab);	
 	}
 	return (0);
 }
 
+void	free_square(t_square *square)
+{
+	int i;
+
+	i = 0;
+	while(i < square->size)
+	{
+		ft_memdel((void **)&(square->square[i]));
+		i++;
+	}
+	ft_memdel((void **)&(square->square));
+	ft_memdel((void **)&(square));
+}
 
