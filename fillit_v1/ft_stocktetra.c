@@ -6,13 +6,13 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/02 12:40:59 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/02 16:17:51 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-
+/*
 char	***ft_malloc_tab(int count)
 {
 	char	***tab;
@@ -94,4 +94,55 @@ void	free_square(t_square *square)
 	ft_memdel((void **)&(square->square));
 	ft_memdel((void **)&(square));
 }
+*/
+t_tetri	*ft_create_tetri(char **tetrimino, int count)
+{
+	t_tetri *tetri;
 
+	if (!(tetri = (t_tetri *)malloc(sizeof(t_tetri))))
+		return (NULL);
+	tetri->shape = tetrimino;
+	tetri->letter = 'A' + count;
+	tetri->x = 0;
+	tetri->y = 0;
+	tetri->next = NULL;
+	return (tetri);
+}
+
+char	**read_entry(char *str, int count)
+{
+	int 	fd;
+	int 	ret;
+	char	buf[BUFF_SIZE + 1];
+	char	**tab;
+
+	if ((fd = open(str, O_RDONLY)) == -1)
+		return (NULL);
+	ret = 1;
+	tab = NULL;
+	while ((ret = read(fd, buf, BUFF_SIZE)) != 0)
+		buf[ret] = '\0';
+	if (!(tab = (char **)malloc(sizeof(char *) * count + 1)))
+		return (NULL);
+	return (tab);
+}
+
+t_tetri 	*ft_stocktetra(char **tab, int count)
+{
+	int i;
+	t_tetri	*first_tetri;
+	t_tetri	*tmp;
+
+	i = 0;
+	first_tetri = NULL;
+	tmp = NULL;
+	first_tetri = ft_create_tetri(ft_strsplit(tab[0], '\n'), 0);
+	tmp = first_tetri;
+	while (i < count)
+	{
+		tmp->next = ft_create_tetri(ft_strsplit(tab[i], '\n'), i);
+		tmp = tmp->next;
+		i++;
+	}
+	return (tmp);
+}

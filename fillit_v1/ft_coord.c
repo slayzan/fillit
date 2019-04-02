@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:51:40 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/02 12:42:17 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/02 14:15:45 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
@@ -144,7 +144,7 @@ static int		ft_findmaxy(char ***tetrab,int bloc)
 	int y;
 	int x;
 	int find;
-	int save;
+//	int save;
 
 	y = 0;
 	x = 0;
