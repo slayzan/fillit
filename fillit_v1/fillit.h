@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:57:23 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/29 20:09:35 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/02 12:01:07 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,20 @@
 # include "../libft/get_next_line.h"
 # include <math.h>
 
-typedef struct s_point
+typedef struct s_coord
 {
-	int miny;
 	int minx;
 	int maxx;
+	int miny;
 	int maxy;
-}			t_point;
+}			t_coord;
+
+
+typedef struct s_point
+{
+	int x;
+	int y;
+}				t_point;
 
 typedef	struct	s_square
 {
@@ -40,7 +47,8 @@ char				***ft_stocktetra(int fd, int count, char *line);
 void				printtab(char ***tab);
 void				free_square(t_square *square);
 void				ft_printresult(char **tab, int len_array);
-t_point				*ft_findpoint(char ***tetrab,int bloc);
+t_point				*new_point(int x, int y);
+t_coord				*ft_findpoint(char ***tetrab,int bloc);
 t_square			*ft_solve(char ***tetrab, int max);
 
 #endif

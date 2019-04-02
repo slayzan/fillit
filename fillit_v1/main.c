@@ -6,7 +6,7 @@
 /*   By: mchamayo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 16:59:54 by mchamayo          #+#    #+#             */
-/*   Updated: 2019/03/29 20:05:01 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/02 12:07:49 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,8 @@ int		main(int argc, char **argv)
 	{
 		if(!(tab = ft_stocktetra(fd2, count, line)))
 			return (0);
-		point = ft_findpoint(tab, 1);
-		printf("%d", point->maxy);
-		/*board = ft_solve(tab,7);
-		ft_printresult(board->square,15);*/
+		board = ft_solve(tab,7);
+		//ft_printresult(board->square,15);
 	}
 	return (0);
 }

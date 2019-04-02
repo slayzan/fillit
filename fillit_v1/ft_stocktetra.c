@@ -6,19 +6,20 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/29 18:44:59 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/02 12:40:59 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+
 char	***ft_malloc_tab(int count)
 {
 	char	***tab;
-	int		i;
-	int		j;
-	int		num;
-	int		line;
+	int	i;
+	int	j;
+	int	num;
+	int	line;
 
 	i = 0;
 	j = 0;
@@ -32,7 +33,7 @@ char	***ft_malloc_tab(int count)
 			return (NULL);
 		while (j < 5)
 		{
-			if (!(tab[i][j++] = (char *)malloc(sizeof(char) * (5))))
+			if (!(tab[i][j] = ft_strnew(line + 1)))
 				return (NULL);
 		}
 		i++;
@@ -40,7 +41,6 @@ char	***ft_malloc_tab(int count)
 	}
 	return (tab);
 }
-
 // stocke les blocs de tetraminos dans un tableau tab[bloc][x][y]
 // ou bloc est le nombre de blocs de tetraminos, x le nombre de lignes,
 // et y le nombre de colonnes.
@@ -76,13 +76,9 @@ char	***ft_stocktetra(int fd2, int count, char *line)
 		}
 	}
 	tab[bloc++][x++][y++] = 0;
-	if (ft_check_shape(tab, bloc) == 1)
-	{
-		if (!ft_tetraclean(tab))
-			return 0;
-		return (tab);	
-	}
-	return (0);
+	if (!ft_tetraclean(tab))
+		return (0);
+	return (tab);
 }
 
 void	free_square(t_square *square)

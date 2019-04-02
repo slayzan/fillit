@@ -6,10 +6,76 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:51:40 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/29 20:05:09 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/02 12:42:17 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
+
+t_point	*new_point(int x, int y)
+{
+	t_point	*new;
+
+	new = ft_memalloc(sizeof(t_point));
+	new->x = x;
+	new->y = y;
+	return (new);
+}
+
+static t_point *get_maxpoint(char ***tetrab, int bloc)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	t_point *max;
+
+	max = new_point(0,0);
+	while (i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			if (tetrab[bloc][i][j] == '#')
+			{
+				if (i > max->x)
+					max->x = i;
+				if (j > max->y)
+					max->y = j;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (max);
+}
+
+static	t_point	*get_minpoint(char ***tetrab, int bloc)
+{
+	int i;
+	int j;
+	t_point *min;
+
+	min = new_point(3, 3);
+	i = 0;
+	while (i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			if (tetrab[bloc][i][j] == '#')
+			{
+				if (i < min->x)
+					min->x = i;
+				if (j < min->y)
+					min->y = j;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (min);
+}
 
 static int	ft_findminx(char ***tetrab, int bloc)
 {
@@ -100,11 +166,11 @@ static int		ft_findmaxy(char ***tetrab,int bloc)
 	return (y);
 }
 
-t_point	*ft_findpoint(char ***tetrab,int bloc)
+t_coord	*ft_findpoint(char ***tetrab,int bloc)
 {
-	t_point *new;
+	t_coord *new;
 
-	if((new = (t_point*)ft_memalloc(sizeof(t_point))))
+	if((new = (t_coord*)ft_memalloc(sizeof(t_coord))))
 	{
 		new->minx = ft_findminx(tetrab,bloc);
 		new->maxx = ft_findmaxx(tetrab,bloc);
