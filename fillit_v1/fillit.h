@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:57:23 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/02 17:15:22 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/03 15:14:38 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,9 @@ typedef	struct	s_square
 typedef	struct s_tetri
 {
 	char	**shape;
-	int		x;
-	int		y;
+	t_point	*min;
+	t_point	*max;
 	char	letter;
-	struct	s_tetri *next;
-	struct	s_tetri *prev;
-
 } 				t_tetri;
 
 char **ft_strsplitlol(char const *s, char c);
@@ -61,7 +58,11 @@ char 				**ft_stocktetra(int fd, int count);
 void				printtab(char ***tab);
 void				free_square(t_square *square);
 void				ft_printresult(char **tab, int len_array);
+char				**ft_splittab(char *str);
 t_point				*new_point(int x, int y);
+t_point				*get_maxpoint(char **tab);
+t_point				*get_minpoint(char **tab);
+t_tetri				**ft_createlist(char **tab, int bloc);
 t_coord				*ft_findpoint(char ***tetrab,int bloc);
 t_square			*ft_solve(char ***tetrab, int max);
 

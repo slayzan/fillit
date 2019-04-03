@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/03 13:19:27 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/03 15:09:32 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,46 +41,8 @@ char	**ft_malloc_tab(char **tab, int count)
 	tab[i] = 0;
 	return (tab);
 }
-// stocke les blocs de tetraminos dans un tableau tab[bloc][x][y]
-// ou bloc est le nombre de blocs de tetraminos, x le nombre de lignes,
-// et y le nombre de colonnes.
-/*
-char	***ft_stocktetra(int fd2, int count, char *line)
-{
-	char	***tab;
-	int		bloc;
-	int		y;
-	int		x;
 
-	x = 0;
-	y = 0;
-	bloc = 0;
-	tab = ft_malloc_tab(count);
-	while (get_next_line(fd2, &line) == 1)
-	{
-		if (line[0] == '\0')
-		{
-			x = 0;
-			bloc++;
-		}
-		else
-		{
-			while (line[y])
-			{
-				tab[bloc][x][y] = line[y];
-				y++;
-			}
-			tab[bloc][x][y] = '\0';
-			y = 0;
-			x++;
-		}
-	}
-	tab[bloc++][x++][y++] = 0;
-	if (!ft_tetraclean(tab))
-		return (0);
-	return (tab);
-}
-*/
+
 void	free_square(t_square *square)
 {
 	int i;
@@ -179,6 +141,7 @@ static char **ft_tabcreate(char *str, char **tab, int bloc)
 	tab[i] = 0;
 	return (tab);
 }
+
 char  **ft_stocktetra(int fd,int count)
 {
 	char **tab;
@@ -196,15 +159,12 @@ char  **ft_stocktetra(int fd,int count)
 		if (line[0] != '\0')
 		{
 			str = ft_strjoin(str,line);
-			//printf("%s\n", str);
 		}
 		free(line);
 	}
 	if(!(tab = ft_tabcreate(str, tab, bloc)))
 	{
-		printf("dsada");
 		return (NULL);
 	}
-	ft_printresult(tab, bloc);
 	return (tab);
 }

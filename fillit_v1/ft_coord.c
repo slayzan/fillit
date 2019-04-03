@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:51:40 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/02 14:15:45 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/04/03 15:15:20 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
@@ -21,7 +21,7 @@ t_point	*new_point(int x, int y)
 	return (new);
 }
 
-static t_point *get_maxpoint(char ***tetrab, int bloc)
+t_point *get_maxpoint(char **tab)
 {
 	int i;
 	int j;
@@ -36,7 +36,7 @@ static t_point *get_maxpoint(char ***tetrab, int bloc)
 		j = 0;
 		while (j < 4)
 		{
-			if (tetrab[bloc][i][j] == '#')
+			if (tab[i][j] == '#')
 			{
 				if (i > max->x)
 					max->x = i;
@@ -50,7 +50,7 @@ static t_point *get_maxpoint(char ***tetrab, int bloc)
 	return (max);
 }
 
-static	t_point	*get_minpoint(char ***tetrab, int bloc)
+t_point	*get_minpoint(char **tab)
 {
 	int i;
 	int j;
@@ -63,7 +63,7 @@ static	t_point	*get_minpoint(char ***tetrab, int bloc)
 		j = 0;
 		while (j < 4)
 		{
-			if (tetrab[bloc][i][j] == '#')
+			if (tab[i][j] == '#')
 			{
 				if (i < min->x)
 					min->x = i;
