@@ -49,7 +49,7 @@ void	ft_printresult(char **tab, int len_array);
 char				**read_entry(char *str, int count);
 int					ft_count_tetri(char *str);
 void					ft_tetracking(char ***tetrab, int len_array);
-int					ft_check_shape(char ***tab, int count);
+int					ft_check_shape(char **tab, int count);
 int					main(int argc, char **argv);
 int					ft_parser(int fd);
 int					ft_sizetetra(char ***array, int bloc, int x, int y);
