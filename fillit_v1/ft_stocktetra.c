@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/02 17:48:02 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/03 13:19:27 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,19 +150,32 @@ t_tetri 	*ft_stocktetra(char **tab, int count)
 static char **ft_tabcreate(char *str, char **tab, int bloc)
 {
 	int i;
+	int j;
+	char *s2;
 
 	i = 0;
-//	printf("%d", bloc);
+	s2 = ft_memalloc(sizeof(char) * 21);
 	if (!(tab = (char **)ft_memalloc(sizeof(char*) * (bloc + 1))))
 		return (NULL);
 	while (i < bloc)
 	{
+		j = 0;
+		s2 = ft_strncpy(s2, str, 16);
 		if(!(tab[i] = (char*)malloc(sizeof(char *) * 21)))
 			return (NULL);
-		ft_strncpy(tab[i],str + (21 * i), 21);
-		tab[i][21] = '\0';
+		tab[i] = ft_strdup(s2);
+		tab[i][17] = '\0';
+		while (j < 16)
+		{
+			str++;
+			j++;
+		}
 		i++;
+		ft_strclr(s2);
+
+	
 	}
+	free(s2);
 	tab[i] = 0;
 	return (tab);
 }
@@ -175,7 +188,6 @@ char  **ft_stocktetra(int fd,int count)
 	char *line;
 
 	bloc = ((count + 1) / 5);
-	printf("bloc =%d", bloc);
 	i = 0;
 	if (!(str = (char*)ft_memalloc(sizeof(char) * 21)))
 		return (NULL);
@@ -188,7 +200,6 @@ char  **ft_stocktetra(int fd,int count)
 		}
 		free(line);
 	}
-//	printf("%s",str);
 	if(!(tab = ft_tabcreate(str, tab, bloc)))
 	{
 		printf("dsada");
