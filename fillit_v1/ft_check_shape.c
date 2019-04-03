@@ -64,7 +64,7 @@ int		ft_check_shape(char **tab, int count)
 	count = (count + 1) / 5 - 1;
 	hash = ft_check_tetradot(tab, count);
 	printf("count = %d\n", ret);
-	if (hash > ret)
+	if (hash >= ret)
 		return (1);
 	return (0);
 }

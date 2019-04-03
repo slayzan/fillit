@@ -19,9 +19,6 @@ int		main(int argc, char **argv)
 	int		count;
 	t_tetri		**first_tetri;
 	int		fd2;
-//	char	*line;
-//	t_square *board;
-//	t_point  *point;
 	
 	count = 0;
 	first_tetri = NULL;
@@ -49,10 +46,10 @@ int		main(int argc, char **argv)
 	tab = ft_stocktetra(fd2, count);
 	if(!(ft_check_shape(tab, count)))
 		printf("error checkshape");
-/*	if(!(test = ft_splittab(tab[0])))
+	if(!(test = ft_splittab(tab[0])))
 		printf("no");
 	first_tetri = ft_createlist(tab,4);
-	printf("%d", first_tetri[0]->max->x); */
+	printf("%d", first_tetri[0]->max->x);
 /*	if ((tab = read_entry(argv[1], (count % 5) + 1)) == NULL)
 	{
 		printf("error read_entry\n");
