@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:51:40 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/03 20:09:42 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/06 13:55:57 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
@@ -57,6 +57,7 @@ t_point	*get_minpoint(char **tab)
 	t_point *min;
 
 	min = new_point(3, 3);
+	printf("%d = min",min->x);
 	i = 0;
 	while (i < 4)
 	{

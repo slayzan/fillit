@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:37:18 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/06 12:51:39 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/06 14:05:25 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ t_tetri **ft_createlist(char **tab, int bloc)
 	{
 		new[i] = (t_tetri*)ft_memalloc(sizeof(t_tetri));
 		new[i]->shape = ft_splittab(tab[i],i);
-		new[i]->min = get_maxpoint(new[i]->shape);
+		new[i]->min = get_minpoint(new[i]->shape);
 	   	new[i]->max = get_maxpoint(new[i]->shape);
+		printf("%d",new[i]->max->y);
 		new[i]->letter = 'A' + i;
 		i++;
 	}

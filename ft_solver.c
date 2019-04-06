@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:19:57 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/06 12:56:18 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/06 14:06:01 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
@@ -58,7 +58,7 @@ static void		ft_place(t_square *board, t_tetri *tetra ,t_point *point, char s)
 	i = mi;
 	while (i <= tetra->max->x)
 	{
-		j = tetra->min->y;
+		j = mj;
 		while (j <= tetra->max->y)
 		{
 			if (tetra->shape[i][j] == '#')
@@ -123,6 +123,7 @@ static int	ft_solveboard(t_square *board,t_tetri **tetra,int bloc, int ac)
 		}
 		i++;
 	}
+	printf("dada");
 	return (0);
 }
 //debut recursive creer le tablau l'agrandit si solveboard renvoie 0;
@@ -131,10 +132,12 @@ t_square	*ft_solve(t_tetri **tetra, int bloc)
 	int len_array;
 	t_square	*board;
 
-	len_array=3;
+	len_array= 3;
 	board = new_square(len_array);
-	if (!(ft_solveboard(board,tetra,bloc, 0)))
+	while (!ft_solveboard(board,tetra,bloc, 0))
 	{
+		printf("gsa");
+		len_array++;
 		free_square(board);
 		board = new_square(len_array);
 	}
