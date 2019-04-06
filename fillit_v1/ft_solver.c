@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:19:57 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/06 12:34:51 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/06 12:56:18 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
@@ -119,7 +119,9 @@ static int	ft_solveboard(t_square *board,t_tetri **tetra,int bloc, int ac)
 				else
 					ft_place(board,tetra[ac],new_point(i,j),'.');//replace '.' si erreur
 			}
+			j++;
 		}
+		i++;
 	}
 	return (0);
 }
@@ -129,13 +131,12 @@ t_square	*ft_solve(t_tetri **tetra, int bloc)
 	int len_array;
 	t_square	*board;
 
-	printf("eeq");
-	len_array = 3;
+	len_array=3;
 	board = new_square(len_array);
 	if (!(ft_solveboard(board,tetra,bloc, 0)))
 	{
 		free_square(board);
-		board = new_square(len_array++);
+		board = new_square(len_array);
 	}
 	return (board);
 }
