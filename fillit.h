@@ -6,14 +6,14 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:57:23 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/03 20:13:17 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/06 14:01:11 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
-# include "../libft/libft.h"
-# include "../libft/get_next_line.h"
+# include "libft/libft.h"
+# include "libft/get_next_line.h"
 # include <math.h>
 
 typedef struct s_coord
@@ -65,5 +65,6 @@ t_point				*get_minpoint(char **tab);
 t_tetri				**ft_createlist(char **tab, int bloc);
 t_coord				*ft_findpoint(char ***tetrab,int bloc);
 t_square			*ft_solve(t_tetri **tetra, int bloc);
+int					main(int argc, char **argv);
 
 #endif
