@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: mchamayo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 16:59:54 by mchamayo          #+#    #+#             */
-/*   Updated: 2019/04/03 15:17:45 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/06 12:51:18 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int		main(int argc, char **argv)
 	char	**tab;
 	int		count;
 	t_tetri		**first_tetri;
+	t_square *square;
 	int		fd2;
 	
 	count = 0;
@@ -44,12 +45,13 @@ int		main(int argc, char **argv)
 	}
 	char **test;
 	tab = ft_stocktetra(fd2, count);
-	if(!(ft_check_shape(tab, count)))
-		printf("error checkshape");
-	if(!(test = ft_splittab(tab[0])))
+//	if(!(ft_check_shape(tab, count)))
+//		printf("error checkshape");
+/*	if(!(test = ft_splittab(tab[0])))
 		printf("no");
-	first_tetri = ft_createlist(tab,4);
-	printf("%d", first_tetri[0]->max->x);
+*/	first_tetri = ft_createlist(tab,4);
+	square = ft_solve(first_tetri, 4);
+	ft_printresult(square->square, square->size);
 /*	if ((tab = read_entry(argv[1], (count % 5) + 1)) == NULL)
 	{
 		printf("error read_entry\n");

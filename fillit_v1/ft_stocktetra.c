@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/03 15:09:32 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/06 12:42:36 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ static char **ft_tabcreate(char *str, char **tab, int bloc)
 	}
 	free(s2);
 	tab[i] = 0;
+//	ft_printresult(tab,21);
 	return (tab);
 }
 

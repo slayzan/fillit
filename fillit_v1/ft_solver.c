@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:19:57 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/02 12:33:33 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/06 12:34:51 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
@@ -46,21 +46,23 @@ static t_square	*new_square(int size)
 	return (new);
 }
  // place le tetramino sur le board
-static void		ft_place(t_square *board, char ***tetrab, int bloc, t_point *point, int s)
+static void		ft_place(t_square *board, t_tetri *tetra ,t_point *point, char s)
 {
-	t_coord *coord;
 	int i;
 	int j;
+	int mi;
+	int mj;
 
-	coord = ft_findpoint(tetrab,bloc);
-	i = coord->minx;
-	while (i <= coord->maxx)
+	mi = tetra->min->x;
+	mj = tetra->min->y;
+	i = mi;
+	while (i <= tetra->max->x)
 	{
-		j = coord->miny;
-		while (j <= coord->maxy)
+		j = tetra->min->y;
+		while (j <= tetra->max->y)
 		{
-			if (tetrab[bloc][i][j] == '#')
-					board->square[point->x + i - coord->minx][point->y + j - coord->miny] = 'A' + bloc;
+			if (tetra->shape[i][j] == '#')
+					board->square[point->x + i - mi][point->y + j - mj] = s;
 			j++;
 		}
 		i++;
@@ -68,69 +70,69 @@ static void		ft_place(t_square *board, char ***tetrab, int bloc, t_point *point,
 }
 
 //verifie si le tetramino a la place pour rentrer sur le board;
-static int	ft_checkplace(t_square *board, char ***tetrab, int bloc,int x,int y)
+static int	ft_checkplace(t_square *board, t_tetri *tetra,int x,int y)
 {
-	t_coord *point;
 	int i;
 	int j;
+	int mi;
+	int mj;
 
-	point = ft_findpoint(tetrab,bloc);
-	i = point->minx;
-	while (i <= point->maxx)
+
+	mi = tetra->min->x;
+	mj = tetra->min->y;
+	i = mi;
+	while (i <= tetra->max->x)
 	{
-		j = point->miny;
-		while (j <= point->maxy)
+		j = mj;
+		while (j <= tetra->max->y)
 		{
-			if (tetrab[bloc][i][j] == '#' && 
-					board->square[x + i - point->minx][y + j - point->miny] != '.')
+			if (tetra->shape[i][j] == '#' && 
+					board->square[x + i - mi][y + j - mj] != '.')
 				return (0);
 			j++;
 					
 		}
 		i++;
 	}
-	ft_place(board,tetrab,bloc,new_point(x,y),'A' + bloc);
+	ft_place(board,tetra,new_point(x,y),tetra->letter);
 	return (1);
 }
 
 // recursive parcour le tableau et place tant checkplace ne renoie pas 0;
-static int	ft_solveboard(t_square *board,char ***tetrab, int bloc, int max)
+static int	ft_solveboard(t_square *board,t_tetri **tetra,int bloc, int ac)
 {
 	int i;
 	int j;
-	t_coord *point;
 
-	point = ft_findpoint(tetrab,bloc); 
-	if (bloc == max)
+	if (ac == bloc)
 		return (1);
 	i = 0;
-	while (i < board->size - point->maxx + point->minx)
+	while (i < board->size - tetra[ac]->max->x + tetra[ac]->min->x)
 	{
 		j = 0;
-		while (j < board->size - point->maxy + point->miny)	
+		while (j < board->size - tetra[ac]->max->y + tetra[ac]->min->y)	
 		{
-			if (ft_checkplace(board,tetrab,bloc,i,j))
+			if (ft_checkplace(board,tetra[ac],i,j))
 			{
-				if (ft_solveboard(board,tetrab,bloc + 1,max))
+				if (ft_solveboard(board,tetra,bloc,ac + 1))
 						return (1);
 				else
-					ft_place(board,tetrab,bloc,new_point(i,j),'.');//replace '.' si erreur
+					ft_place(board,tetra[ac],new_point(i,j),'.');//replace '.' si erreur
 			}
 		}
 	}
 	return (0);
 }
 //debut recursive creer le tablau l'agrandit si solveboard renvoie 0;
-t_square	*ft_solve(char ***tetrab, int max)
+t_square	*ft_solve(t_tetri **tetra, int bloc)
 {
 	int len_array;
-	int bloc;
 	t_square	*board;
 
+	printf("eeq");
 	len_array = 3;
-	bloc = 0;
 	board = new_square(len_array);
-	if (!(ft_solveboard(board,tetrab,bloc,max)))
+	if (!(ft_solveboard(board,tetra,bloc, 0)))
 	{
 		free_square(board);
 		board = new_square(len_array++);
