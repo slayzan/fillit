@@ -6,7 +6,7 @@
 /*   By: mchamayo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 15:57:31 by mchamayo          #+#    #+#             */
-/*   Updated: 2019/04/03 19:14:17 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/06 15:48:06 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		ft_check_tetradot(char **tab, int count)
 		if (tab[x][y] == '#')
 		{
 			hash = ft_count_hash(tab, x, y) + hash;
-		//	printf("hash = %d\n", hash);
+		//printf("hash = %d\n", hash);
 		}
 		//printf("y = %d\n", y);
 		y++;

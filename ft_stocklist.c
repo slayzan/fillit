@@ -6,18 +6,18 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:37:18 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/06 14:34:03 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/04/06 15:43:33 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**ft_splittab(char *str,int tetra)
+char	**ft_splittab(char *str, int tetra)
 {
-	int i;
-	int j;
-	char *tmp;
-	char **tab;
+	int		i;
+	int		j;
+	char	*tmp;
+	char	**tab;
 
 	i = 0;
 	tmp = (char*)ft_memalloc(sizeof(char) * (21));
@@ -38,21 +38,19 @@ char	**ft_splittab(char *str,int tetra)
 	return (tab);
 }
 
-
-
-t_tetri **ft_createlist(char **tab, int bloc)
+t_tetri	**ft_createlist(char **tab, int bloc)
 {
-	int i;
-	t_tetri **new;
+	int		i;
+	t_tetri	**new;
 
 	new = (t_tetri**)ft_memalloc(sizeof(t_tetri*) * bloc);
 	i = 0;
-	while(i < bloc)
+	while (i < bloc)
 	{
 		new[i] = (t_tetri*)ft_memalloc(sizeof(t_tetri));
-		new[i]->shape = ft_splittab(tab[i],i);
+		new[i]->shape = ft_splittab(tab[i], i);
 		new[i]->min = get_minpoint(new[i]->shape);
-	   	new[i]->max = get_maxpoint(new[i]->shape);
+		new[i]->max = get_maxpoint(new[i]->shape);
 		new[i]->letter = 'A' + i;
 		i++;
 	}
