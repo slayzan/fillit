@@ -6,7 +6,7 @@
 /*   By: mchamayo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 16:59:54 by mchamayo          #+#    #+#             */
-/*   Updated: 2019/04/06 14:00:40 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/06 14:34:37 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ int		main(int argc, char **argv)
 //		printf("error checkshape");
 /*	if(!(test = ft_splittab(tab[0])))
 		printf("no");
-*/	first_tetri = ft_createlist(tab,4);
-	square = ft_solve(first_tetri, 4);
+*/	count = (count + 1) / 5;
+	first_tetri = ft_createlist(tab, count);
+	square = ft_solve(first_tetri, count);
 	ft_printresult(square->square, square->size);
 /*	if ((tab = read_entry(argv[1], (count % 5) + 1)) == NULL)
 	{

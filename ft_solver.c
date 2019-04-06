@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:19:57 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/06 14:06:01 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/06 14:32:23 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fillit.h"
@@ -123,7 +123,6 @@ static int	ft_solveboard(t_square *board,t_tetri **tetra,int bloc, int ac)
 		}
 		i++;
 	}
-	printf("dada");
 	return (0);
 }
 //debut recursive creer le tablau l'agrandit si solveboard renvoie 0;
@@ -136,7 +135,6 @@ t_square	*ft_solve(t_tetri **tetra, int bloc)
 	board = new_square(len_array);
 	while (!ft_solveboard(board,tetra,bloc, 0))
 	{
-		printf("gsa");
 		len_array++;
 		free_square(board);
 		board = new_square(len_array);
