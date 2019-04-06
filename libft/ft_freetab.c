@@ -6,18 +6,18 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 17:18:45 by humarque          #+#    #+#             */
-/*   Updated: 2019/02/13 20:01:22 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/06 16:57:52 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_freetab(void **tab)
+void	ft_freetab(char **tab)
 {
 	int i;
 
 	i = 0;
-	while (tab[i] != 0)
+	while (tab[i])
 		free(tab[i++]);
 	free(tab);
 }

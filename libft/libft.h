@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 18:53:49 by humarque          #+#    #+#             */
-/*   Updated: 2019/03/06 12:53:57 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/04/06 16:57:34 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-void				ft_freetab(void **tab);
+void				ft_freetab(char **tab);
 void				*ft_memset (void *s, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dest, const void *src, size_t n);

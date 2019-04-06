@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/06 15:44:03 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/04/06 16:54:45 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,9 @@ char		**ft_stocktetra(int fd, int count)
 {
 	char	**tab;
 	int		i;
-	int		bloc;
 	char	*str;
 	char	*line;
 
-	bloc = ((count + 1) / 5);
 	i = 0;
 	if (!(str = (char*)ft_memalloc(sizeof(char) * 21)))
 		return (NULL);
@@ -104,7 +102,7 @@ char		**ft_stocktetra(int fd, int count)
 			str = ft_strjoin(str, line);
 		free(line);
 	}
-	if (!(tab = ft_tabcreate(str, tab, bloc)))
+	if (!(tab = ft_tabcreate(str, tab, count)))
 	{
 		return (NULL);
 	}
