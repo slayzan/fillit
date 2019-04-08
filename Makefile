@@ -5,36 +5,48 @@
 #                                                     +:+ +:+         +:+      #
 #    By: humarque <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/02/07 14:38:29 by humarque          #+#    #+#              #
-#    Updated: 2019/04/06 14:02:31 by mchamayo         ###   ########.fr        #
+#    Created: 2019/04/08 14:15:22 by humarque          #+#    #+#              #
+#    Updated: 2019/04/08 14:35:48 by humarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = test_fillit
+NAME = fillit
+CC = gcc
 
-source = ft_parser.c
+SRC_PATH = ./src/
+OBJ_PATH = ./obj/
+LIB_PATH = ./lib/
+INC_PATH = ./include/ $(LIB_PATH)libft/include/
 
-flag = -Wall -Wextra -Werror
+GCC_FLGS = -Werror -Wextra -Wall
 
-incld = ./includes/
+SRC_NAME = main.c ft_check_shape.c ft_coord.c ft_parser.c ft_printresult.c \
+		   ft_solver.c ft_stocklist.c ft_stocktetra.c
+
+OBJ_NAME = $(SRC_NAME:.c=.o)
+LIB_NAME = libft
+
+SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
+OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
+INC = $(addprefix -I,$(INC_PATH))
+LIB = $(addprefix -L$(LIB_PATH),$(LIB_NAME))
 
 all: $(NAME)
 
-$(NAME):
-	
-	clang -I libft/includes -o main.o -c main.c
-	clang -I libft/includes -o ft_parser.o -c ft_parser.c
-	clang -I libft/includes -o ft_printresult.o -c ft_printresult.c
-	clang -I libft/includes -o ft_solver.o -c ft_solver.c
-	clang -I libft/includes -o ft_stocktetra.o -c ft_stocktetra.c
-	clang -I libft/includes -o ft_coord.o -c ft_coord.c
-	clang -I libft/includes -o ft_stocklist.o -c ft_stocklist.c
-	clang -o $(NAME) main.o ft_parser.o ft_printresult.o ft_solver.o ft_stocktetra.o ft_coord.o ft_stocklist.o -I libft/includes -L libft/ -lft
+$(NAME): $(OBJ)
+	make -C $(LIB_PATH)libft
+	$(CC) $(GCC_FLGS) $(LIB) -lft $(INC) $(OBJ) -o $(NAME)
+
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	mkdir -p $(OBJ_PATH)
+	$(CC) $(GCC_FLGS) $(INC) -o $@ -c $<
 
 clean:
-	rm main.o ft_parser.o ft_printresult.o ft_solver.o ft_stocktetra.o ft_coord.o ft_stocklist.o
+	rm -fv $(OBJ)
+	rm -rf $(OBJ_PATH)
 
-fclean:
-	rm $(NAME)
+fclean: clean
+	make -C $(LIB_PATH)libft fclean
+	rm -fv $(NAME)
 
-re: clean fclean all
+re: fclean all
