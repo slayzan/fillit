@@ -6,7 +6,7 @@
 #    By: humarque <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/08 14:15:22 by humarque          #+#    #+#              #
-#    Updated: 2019/04/08 14:35:48 by humarque         ###   ########.fr        #
+#    Updated: 2019/04/08 18:55:56 by humarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 
 clean:
 	rm -fv $(OBJ)
-	rm -rf $(OBJ_PATH)
 
 fclean: clean
 	make -C $(LIB_PATH)libft fclean

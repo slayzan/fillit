@@ -6,13 +6,11 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:19:57 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/06 15:41:09 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/04/08 17:57:57 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-//Malloc le tableau de solution;
 
 static t_square	*new_square(int size)
 {
@@ -28,13 +26,7 @@ static t_square	*new_square(int size)
 		{
 			while (i < size)
 			{
-				if (!(new->square[i] = ft_strnew(size)))
-				{
-					while (--i)
-						free(new->square[i]);
-					free(new->square);
-					free(new);
-				}
+				new->square[i] = ft_strnew(size);
 				j = 0;
 				while (j < size)
 				{
@@ -47,8 +39,6 @@ static t_square	*new_square(int size)
 	}
 	return (new);
 }
-
-// place le tetramino sur le board
 
 static void		ft_place(t_square *board, t_tetri *tet, t_point *point, char s)
 {
@@ -72,8 +62,6 @@ static void		ft_place(t_square *board, t_tetri *tet, t_point *point, char s)
 		i++;
 	}
 }
-
-//verifie si le tetramino a la place pour rentrer sur le board;
 
 static int		ft_checkplace(t_square *board, t_tetri *tetra, int x, int y)
 {
@@ -101,8 +89,6 @@ static int		ft_checkplace(t_square *board, t_tetri *tetra, int x, int y)
 	return (1);
 }
 
-// recursive parcour le tableau et place tant checkplace ne renoie pas 0;
-
 static int		ft_solveboard(t_square *board, t_tetri **tet, int bloc, int ac)
 {
 	int i;
@@ -129,8 +115,6 @@ static int		ft_solveboard(t_square *board, t_tetri **tet, int bloc, int ac)
 	}
 	return (0);
 }
-
-//debut recursive creer le tablau l'agrandit si solveboard renvoie 0;
 
 t_square		*ft_solve(t_tetri **tetra, int bloc)
 {

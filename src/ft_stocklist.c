@@ -6,13 +6,13 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:37:18 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/08 14:29:03 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/08 17:59:16 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static char	**ft_splittab(char *str)
+static char			**ft_splittab(char *str)
 {
 	int		i;
 	int		j;
@@ -38,10 +38,10 @@ static char	**ft_splittab(char *str)
 	return (tab);
 }
 
-t_tetri	**ft_createlist(char **tab, int bloc)
+t_tetri			**ft_createlist(char **tab, int bloc)
 {
-	int		i;
-	t_tetri	**new;
+	int			i;
+	t_tetri		**new;
 
 	new = (t_tetri**)ft_memalloc(sizeof(t_tetri*) * bloc);
 	i = 0;

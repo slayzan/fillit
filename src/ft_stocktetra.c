@@ -6,11 +6,11 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/08 14:30:54 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/08 18:03:23 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "../include/fillit.h"
 
 char		**ft_malloc_tab(char **tab, int count)
 {
@@ -62,8 +62,7 @@ static char	**ft_tabcreate(char *str, char **tab, int bloc)
 
 	i = 0;
 	s2 = ft_memalloc(sizeof(char) * 21);
-	if (!(tab = (char **)ft_memalloc(sizeof(char*) * (bloc + 1))))
-		return (NULL);
+	tab = (char **)ft_memalloc(sizeof(char*) * (bloc + 1));
 	while (i < bloc)
 	{
 		j = 0;
@@ -103,8 +102,6 @@ char		**ft_stocktetra(int fd, int count)
 		free(line);
 	}
 	if (!(tab = ft_tabcreate(str, tab, count)))
-	{
 		return (NULL);
-	}
 	return (tab);
 }
