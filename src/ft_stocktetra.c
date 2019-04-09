@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/08 18:03:23 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/09 12:05:33 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,8 @@ static char	**ft_tabcreate(char *str, char **tab, int bloc)
 			return (NULL);
 		tab[i] = ft_strdup(s2);
 		tab[i][17] = '\0';
-		while (j < 16)
-		{
+		while (j++ < 16)
 			str++;
-			j++;
-		}
 		i++;
 		ft_strclr(s2);
 	}

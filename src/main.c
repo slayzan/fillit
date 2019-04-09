@@ -6,7 +6,7 @@
 /*   By: mchamayo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:51:59 by mchamayo          #+#    #+#             */
-/*   Updated: 2019/04/08 14:48:11 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/09 12:08:39 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		printf("error argc");
+		ft_putendl("error argc");
 		return (0);
 	}
 	if (!(fd = open(argv[1], O_RDONLY)))

@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 14:37:18 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/08 17:59:16 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/09 12:04:55 by mchamayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char			**ft_splittab(char *str)
 	return (tab);
 }
 
-t_tetri			**ft_createlist(char **tab, int bloc)
+t_tetri				**ft_createlist(char **tab, int bloc)
 {
 	int			i;
 	t_tetri		**new;
