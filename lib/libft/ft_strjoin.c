@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 16:48:31 by humarque          #+#    #+#             */
-/*   Updated: 2018/11/28 18:32:46 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/09 19:00:05 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ char			*ft_strjoin(char const *s1, char const *s2)
 	j = 0;
 	if (s1 && s2)
 	{
-		if (!(str = malloc(sizeof(char) * (ft_strlencat(s1, s2) + 1))))
-			return (NULL);
+		str = ft_memalloc(sizeof(char) * (ft_strlencat(s1, s2) + 1));
 		while (s1[i])
 		{
 			str[i] = s1[i];

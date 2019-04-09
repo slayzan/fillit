@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:51:40 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/06 15:22:41 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/04/09 18:50:43 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ t_point		*new_point(int x, int y)
 {
 	t_point	*new;
 
-	new = ft_memalloc(sizeof(t_point));
+	if (!(new = ft_memalloc(sizeof(t_point))))
+	{
+		free(new);
+		return (NULL);
+	}
 	new->x = x;
 	new->y = y;
 	return (new);

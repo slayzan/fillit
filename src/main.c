@@ -6,7 +6,7 @@
 /*   By: mchamayo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 16:51:59 by mchamayo          #+#    #+#             */
-/*   Updated: 2019/04/09 12:08:39 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/04/09 19:02:14 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	solve_all(int count, int fd)
 	ft_printresult(square->square, square->size);
 	ft_freetab(tab);
 	free_square(square);
+	ft_freelist(first_tetri, count);
 }
 
 int		main(int argc, char **argv)

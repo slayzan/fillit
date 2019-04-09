@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 17:19:57 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/08 17:57:57 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/09 19:06:34 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static void		ft_place(t_square *board, t_tetri *tet, t_point *point, char s)
 		}
 		i++;
 	}
+	free(point);
 }
 
 static int		ft_checkplace(t_square *board, t_tetri *tetra, int x, int y)

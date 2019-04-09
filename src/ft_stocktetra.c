@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/09 12:05:33 by mchamayo         ###   ########.fr       */
+/*   Updated: 2019/04/09 19:03:30 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,13 @@ static char	**ft_tabcreate(char *str, char **tab, int bloc)
 	char	*s2;
 
 	i = 0;
-	s2 = ft_memalloc(sizeof(char) * 21);
+	s2 = ft_memalloc(sizeof(char) * 16);
 	tab = (char **)ft_memalloc(sizeof(char*) * (bloc + 1));
 	while (i < bloc)
 	{
 		j = 0;
 		s2 = ft_strncpy(s2, str, 16);
-		if (!(tab[i] = (char*)malloc(sizeof(char *) * 21)))
-			return (NULL);
 		tab[i] = ft_strdup(s2);
-		tab[i][17] = '\0';
 		while (j++ < 16)
 			str++;
 		i++;
@@ -90,15 +87,15 @@ char		**ft_stocktetra(int fd, int count)
 
 	tab = NULL;
 	i = 0;
-	if (!(str = (char*)ft_memalloc(sizeof(char) * 21)))
-		return (NULL);
+	str = (char*)ft_memalloc(sizeof(char) * ((16 * (count / 4)) + 1));
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (line[0] != '\0')
-			str = ft_strjoin(str, line);
+			str = ft_strcat(str, line);
 		free(line);
 	}
 	if (!(tab = ft_tabcreate(str, tab, count)))
 		return (NULL);
+	free(str);
 	return (tab);
 }

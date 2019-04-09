@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 17:03:39 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/09 18:07:53 by humarque         ###   ########.fr       */
+/*   Created: 2019/04/09 16:59:42 by humarque          #+#    #+#             */
+/*   Updated: 2019/04/09 18:42:22 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/fillit.h"
 
-char	*ft_strcat(char *dest, char const *src)
+static void		ft_free_tab_str(t_tetri *str)
 {
 	int i;
-	int j;
 
-	j = 0;
 	i = 0;
-	while (dest[i])
+	while (i < 4)
+		ft_memdel((void **)&str->shape[i++]);
+	ft_memdel((void **)&str->shape);
+}
+
+void			ft_freelist(t_tetri **tetra, int max)
+{
+	int i;
+
+	i = 0;
+	while (i < max)
 	{
-		i++;
+		ft_free_tab_str(tetra[i]);
+		ft_memdel((void**)&tetra[i]->min);
+		ft_memdel((void **)&tetra[i]->max);
+		ft_memdel((void **)&tetra[i++]);
 	}
-	while (src[j])
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	ft_memdel((void **)&tetra);
 }

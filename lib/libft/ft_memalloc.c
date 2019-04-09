@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 15:13:35 by humarque          #+#    #+#             */
-/*   Updated: 2018/11/28 18:20:40 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/09 17:58:52 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	*ft_memalloc(size_t size)
 	void *d;
 
 	if (!(d = (void *)malloc(size)))
+	{
+		free(d);
 		return (NULL);
+	}
 	ft_bzero(d, size);
 	return (d);
 }

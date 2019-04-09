@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:57:23 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/08 14:27:21 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/09 17:02:42 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ char				***ft_tetraclean(char ***tab);
 char				**ft_stocktetra(int fd, int count);
 void				printtab(char ***tab);
 void				free_square(t_square *square);
+void				ft_freelist(t_tetri **tetra, int max);
 void				ft_printresult(char **tab, int len_array);
 t_point				*new_point(int x, int y);
 t_point				*get_maxpoint(char **tab);
