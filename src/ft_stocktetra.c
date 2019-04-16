@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 15:51:09 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/09 19:18:35 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/16 15:45:08 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ static char	**ft_tabcreate(char *str, char **tab, int bloc)
 	i = 0;
 	if (!(s2 = ft_memalloc(sizeof(char) * 16)))
 		return (NULL);
-	if (!(tab = (char **)ft_memalloc(sizeof(char*) * (bloc + 1))))
+
+	if (!(tab = (char **)ft_memalloc(sizeof(char*) * (bloc + 1) + 1)))
 		return (NULL);
 	while (i < bloc)
 	{
@@ -83,18 +84,17 @@ static char	**ft_tabcreate(char *str, char **tab, int bloc)
 char		**ft_stocktetra(int fd, int count)
 {
 	char	**tab;
-	int		i;
 	char	*str;
 	char	*line;
 
 	tab = NULL;
-	i = 0;
-	if (!(str = (char*)ft_memalloc(sizeof(char) * ((16 * (count / 4)) + 1))))
-		return (NULL);
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (line[0] != '\0')
-			str = ft_strcat(str, line);
+		{
+			str = ft_memalloc(sizeof(char) * ft_strlen(line) + 2);
+			str = ft_strcat(str,line);
+		}
 		free(line);
 	}
 	if (!(tab = ft_tabcreate(str, tab, count)))
