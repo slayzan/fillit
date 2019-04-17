@@ -6,7 +6,7 @@
 /*   By: humarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/21 19:57:23 by humarque          #+#    #+#             */
-/*   Updated: 2019/04/09 17:02:42 by humarque         ###   ########.fr       */
+/*   Updated: 2019/04/17 15:12:10 by humarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,12 @@ typedef	struct		s_tetri
 void				ft_printresult(char **tab, int len_array);
 char				**read_entry(char *str, int count);
 int					ft_count_tetri(char *str);
-void				ft_tetracking(char ***tetrab, int len_array);
 int					ft_check_shape(char **tab, int count);
 int					main(int argc, char **argv);
 int					ft_parser(int fd);
 int					ft_sizetetra(char ***array, int bloc, int x, int y);
 char				***ft_tetraclean(char ***tab);
-char				**ft_stocktetra(int fd, int count);
+char				**ft_stocktetra(int fd, int count, int bloc);
 void				printtab(char ***tab);
 void				free_square(t_square *square);
 void				ft_freelist(t_tetri **tetra, int max);

@@ -6,7 +6,7 @@
 #    By: humarque <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 12:34:25 by humarque          #+#    #+#              #
-#    Updated: 2019/04/09 18:37:04 by humarque         ###   ########.fr        #
+#    Updated: 2019/04/17 14:40:40 by humarque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJECTS =  ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memcmp.o ft_memmov
 
 incld = ./includes/
 
-flag = -Wall -Werror -Wextra
+flag = -Wall -Werror -Wextra -g3
 
 all : $(NAME)
 
